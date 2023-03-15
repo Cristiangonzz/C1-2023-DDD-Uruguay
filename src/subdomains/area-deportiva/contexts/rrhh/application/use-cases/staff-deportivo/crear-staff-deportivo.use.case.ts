@@ -37,12 +37,12 @@ export class CrearStaffDeportivoUseCase
     async execute(command: ICrearStaffDeportivoCommands): Promise<IStaffDeportivoCreadoResponse> {
 
         //Creo los value object 
-        const staffDeportivoId = new IdValueObject(command.staffDeportivoId);
+        
         const nombre = new NombreValueObject(command.nombre);
 
     
         // Recopilando errores
-        if (staffDeportivoId.hasErrors() === true) this.setErrors(staffDeportivoId.getErrors());
+       
 
         if (nombre.hasErrors() === true) this.setErrors(nombre.getErrors());
     
@@ -59,7 +59,6 @@ export class CrearStaffDeportivoUseCase
         // Ejecución de la lógica del caso de uso
         const entity = new StaffDeportivoDomainEntity({
            
-            staffDeportivoId: staffDeportivoId.valueOf(),
             nombre: nombre.valueOf(),
             tramite: (await obtenerTramite.execute({tramiteId: command.tamite})).data ,
             empleado: (await obtnerEmpleado.execute({empleadoId : command.empleado})).data,

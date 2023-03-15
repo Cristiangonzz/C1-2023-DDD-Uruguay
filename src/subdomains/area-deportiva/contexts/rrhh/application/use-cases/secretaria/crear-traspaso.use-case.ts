@@ -59,14 +59,12 @@ implements IUseCase<INegociarTraspasoCommands, ITraspasoNegociadoResponse> {
         const state  =  new StateValueObject(command.state);
 
         return {
-
             fechaSalida,
             empleadoId,
             equipoNuevoId,
             equipoSalidaId,
             costo,
             state,
-            
         }
     }
 
@@ -136,7 +134,7 @@ implements IUseCase<INegociarTraspasoCommands, ITraspasoNegociadoResponse> {
 
     //Manda a llamar al al servicio y asi usar sus metodos 
     private exectueOrderAggregateRoot(entity: TraspasoDomainEntity): Promise<TraspasoDomainEntity | null> {
-        return this.aggregateRoot.NegociarContrato(entity)
+        return this.aggregateRoot.NegociarTraspaso(entity)
     }
 }
 

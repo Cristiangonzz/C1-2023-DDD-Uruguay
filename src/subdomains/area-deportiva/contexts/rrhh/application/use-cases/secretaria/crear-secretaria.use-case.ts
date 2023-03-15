@@ -50,7 +50,6 @@ implements IUseCase<ICrearSecretariaCommands, ISecretariaCreadaResponse> {
     async execute(command: ICrearSecretariaCommands): Promise<ISecretariaCreadaResponse> {
 
         //Creo los value object 
-        const secretariaId = new IdValueObject(command.secretariaId);
         const staffDeportivoId = new IdValueObject(command.staffDeportivoId);
         const empleadoId = new IdValueObject(command.empleadoId);
         const contratoId = new IdValueObject(command.contrato);
@@ -60,7 +59,6 @@ implements IUseCase<ICrearSecretariaCommands, ISecretariaCreadaResponse> {
 
 
         // Recopilando errores
-        if (secretariaId.hasErrors() === true) this.setErrors(secretariaId.getErrors());
         if (staffDeportivoId.hasErrors() === true) this.setErrors(staffDeportivoId.getErrors());
         if (empleadoId.hasErrors() === true) this.setErrors(empleadoId.getErrors());
         if (contratoId.hasErrors() === true) this.setErrors(contratoId.getErrors());
@@ -81,7 +79,6 @@ implements IUseCase<ICrearSecretariaCommands, ISecretariaCreadaResponse> {
     
         // Ejecución de la lógica del caso de uso
         const entity = new SecretariaDomainEntity({
-            secretariaId: secretariaId.valueOf(),
             staffDeportivoId: staffDeportivoId.valueOf(),
             empleadoId: empleadoId.valueOf(),
             contrato: (await obtenerContrato.execute({contratoId: command.contrato})).data ,
