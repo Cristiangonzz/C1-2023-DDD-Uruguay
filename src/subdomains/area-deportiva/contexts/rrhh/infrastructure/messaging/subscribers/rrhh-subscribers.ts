@@ -2,11 +2,14 @@
 
 import { Controller } from "@nestjs/common";
 import { Ctx, EventPattern, KafkaContext, Payload } from "@nestjs/microservices";
+import { EventRepository } from '../../persistence/databases/mysql/repositories/event.repository';
+import { EventEntity } from '../../persistence/entities/event.entity';
 
 @Controller()
 export class CreatedClientController{
 
 
+    constructor(private readonly eventRepository : EventRepository){}
     //inyectar el servicio que tiene la entity event
     /**
      * EventPattern se utiliza para definir un patrón de evento de Kafka
@@ -28,6 +31,12 @@ export class CreatedClientController{
     @EventPattern('rrhh.staff-deportivo-creado')
     staffDeportivoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.staff-deportivo-creado'
+        event.createAt = Date();
+       
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -38,6 +47,11 @@ export class CreatedClientController{
     @EventPattern('rrhh.empleado-agregado')
     empleadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.staff-deportivo-creado'
+        event.createAt = Date();
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -47,6 +61,11 @@ export class CreatedClientController{
     @EventPattern('rrhh.documento-empleado-modificado')
     documentoEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.staff-deportivo-creado'
+        event.createAt = Date();
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -55,6 +74,11 @@ export class CreatedClientController{
     }
     @EventPattern('rrhh.nombre-empleado-modificado')
     nombreEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.staff-deportivo-creado'
+        event.createAt = Date();
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -66,6 +90,10 @@ export class CreatedClientController{
     @EventPattern('rrhh.salario-empleado-modificado')
     salarioEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.salario-empleado-modificado'
+        event.createAt = Date();
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
