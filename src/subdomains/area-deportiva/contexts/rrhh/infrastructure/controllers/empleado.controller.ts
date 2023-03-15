@@ -1,8 +1,5 @@
 import { Body, Controller, Post, Get } from '@nestjs/common';
-import { DocumentoModificadoEventPublisher, EmpleadoBuscadoEventPublisher, SalarioModificadoEventPublisher, TipoEmpleadoModificadoEventPublisher, TramiteBuscadoEventPublisher } from '../../domain/events/publishers';
 import { EmpleadoService } from '../persistence/services/empleado.service';
-import { EmpleadoAgregadoEventPublisher } from '../../domain/events/publishers/staff-deporitvo/empleado-agregado.event-publisher';
-import { NombreModificadoEventPublisher } from '../../domain/events/publishers/empleado/nombre-modificado.event-publisher';
 import { AgregarEmpleadoCommand } from '../utils/commands/staffDeportivo/empleado/agregar-empleado.commands';
 import { CrearEmpleadoUseCase } from '../../application/use-cases/staff-deportivo/crear-empleado.use-case';
 import { BuscarEmpleadoCommand } from '../utils/commands/staffDeportivo/empleado/buscar-empleado.commands';

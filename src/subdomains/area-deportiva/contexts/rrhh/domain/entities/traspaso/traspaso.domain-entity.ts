@@ -13,8 +13,8 @@ export class TraspasoDomainEntity implements ITraspasoDomainInterface {
     equipoNuevoId?: string | IdValueObject;
     equipoSalidaId?: string | IdValueObject;
     costo?: number | CostoValueObject;
-    state?: boolean | StateValueObject;
     fechaSalida?: string | FechaValueObject;
+    state?: boolean | StateValueObject;
     
     constructor(_traspaso?: ITraspasoDomainInterface) {
 

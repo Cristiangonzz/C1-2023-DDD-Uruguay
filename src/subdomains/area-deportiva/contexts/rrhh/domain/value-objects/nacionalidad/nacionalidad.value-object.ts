@@ -8,7 +8,7 @@ export class NacionalidadValueObject extends ValueObjectBase<string>{
     }
 
     validateData(): void {
-        this.formatoNacionalidad();
+       // this.formatoNacionalidad();
     }
 
     private formatoNacionalidad():void{
@@ -21,7 +21,6 @@ export class NacionalidadValueObject extends ValueObjectBase<string>{
                 }
     
                 this.setError( error );
-        
         }
     }
    

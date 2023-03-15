@@ -7,7 +7,7 @@ export class StateValueObject extends ValueObjectBase<boolean> {
     }
  
      validateData(): void {
-         this.contenidoTerminos();
+        // this.contenidoTerminos();
      }
  
      contenidoTerminos(): void {

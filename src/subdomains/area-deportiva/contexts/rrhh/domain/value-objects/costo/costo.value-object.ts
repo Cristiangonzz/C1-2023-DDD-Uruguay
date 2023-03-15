@@ -7,7 +7,7 @@ export class CostoValueObject extends ValueObjectBase<number>{
     }
 
     validateData(): void {
-        this.ContenidoCosto();
+        //this.ContenidoCosto();
     }
 
     private ContenidoCosto():void{

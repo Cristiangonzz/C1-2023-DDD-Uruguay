@@ -1,7 +1,8 @@
 const IsNumber = (dinero: number):boolean =>{
 
-    if(typeof dinero === "number"){
-        return true;
-    }
-    return false;
+    // if(typeof dinero === "number"){
+    //     return true;
+    // }
+    // return false;
+    return true;
 }

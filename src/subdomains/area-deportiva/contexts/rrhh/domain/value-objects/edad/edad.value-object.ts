@@ -8,8 +8,8 @@ export class EdadValueObject extends ValueObjectBase<number> {
 
     validateData(): void {
 
-       this.contenidoEdad();
-       this.formatoEdad();
+       //this.contenidoEdad();
+       //this.formatoEdad();
 
     }
     

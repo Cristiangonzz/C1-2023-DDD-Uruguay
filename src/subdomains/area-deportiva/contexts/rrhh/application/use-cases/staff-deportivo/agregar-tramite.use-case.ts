@@ -54,11 +54,9 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
     //Crea los value Object , comoo parametro se tiene un comando y retona un interface porque es la que tiene los OV
     private createValueObject(command: ICrearTramiteCommands): ITramiteDomainInterface {
         //atributos de tramite
-        const tramiteId = new IdValueObject(command.tramiteId);
         const fecha = new FechaValueObject(command.fecha);
 
         //atributo de negociacion
-        const negociacionId = new IdValueObject(command.negociacionId);
         const equipoSalidaId = new IdValueObject(command.equipoSalidaId);
         const equipoNuevoId = new IdValueObject(command.equipoEntradaId);
         const tipoNegociacion = new TipoNegociacionValueObject(command.tipoNegociacion);
@@ -66,7 +64,6 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
         const state = new StateValueObject(command.state) ;
         
         const negociacion : INegociacionDomainEntityInterface = {
-            negociacionId,
             equipoSalidaId,
             equipoNuevoId,
             tipoNegociacion,
@@ -75,7 +72,6 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
         };
 
         return {
-            tramiteId,
             fecha,
             negociacion
         }
@@ -85,13 +81,10 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
     private validateValueObject(valueObject: ITramiteDomainInterface): void {
 
         const {
-            tramiteId,
             fecha,
             negociacion
         } = valueObject
 
-        if (tramiteId instanceof IdValueObject && tramiteId.hasErrors())
-        this.setErrors(tramiteId.getErrors());
 
         if (fecha instanceof FechaValueObject && fecha.hasErrors())
             this.setErrors(fecha.getErrors());
@@ -116,7 +109,7 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
 
         if (this.hasErrors() === true)
             throw new ValueObjectException(
-                'Hay algunos errores en el comando ejecutado por AddClientUseCase',
+                'Hay algunos errores en el comando ejecutado por CrearTramiteUseCase',
                 this.getErrors(),
             );
 
@@ -128,21 +121,18 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
     ): TramiteDomainEntity {
 
         const {
-            tramiteId,
             fecha,
             negociacion
         } = valueObject
 
         return new TramiteDomainEntity({
-            tramiteId: tramiteId,
-            fecha: fecha,
+            fecha: fecha.valueOf(),
             negociacion : new NegociacionDomainEntity({
-                negociacionId: negociacion.negociacionId,
-                equipoSalidaId: negociacion.equipoSalidaId,
-                equipoNuevoId: negociacion.equipoNuevoId,
-                tipoNegociacion: negociacion.tipoNegociacion,
-                terminoACumplir: negociacion.terminoACumplir,
-                state: negociacion.state,
+                equipoSalidaId: negociacion.equipoSalidaId.valueOf(),
+                equipoNuevoId: negociacion.equipoNuevoId.valueOf(),
+                tipoNegociacion: negociacion.tipoNegociacion.valueOf(),
+                terminoACumplir: negociacion.terminoACumplir.valueOf(),
+                state: negociacion.state.valueOf(),
             })
 
         })

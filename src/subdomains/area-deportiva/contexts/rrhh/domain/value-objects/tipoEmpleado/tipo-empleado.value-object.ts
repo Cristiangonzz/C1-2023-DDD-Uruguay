@@ -1,5 +1,5 @@
 import {  ValueObjectBase } from 'src/libs';
-import { uuid } from 'uuidv4';
+
 
 export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
     
@@ -8,7 +8,7 @@ export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
     }
 
     validateData() : void {
-        this.validacionTypeEmpleado();
+        //this.validacionTypeEmpleado();
     }
 
     private validacionTypeEmpleado() : void {

@@ -8,6 +8,17 @@ import { ModificarTipoEmpleadoPublisher } from './publishers/staffDeportivo/empl
 import { ModificarSalarioEmpleadoPublisher } from './publishers/staffDeportivo/empleado/modificar-salario-empleado.publisher';
 import { ModificarNombreEmpleadoPublisher } from './publishers/staffDeportivo/empleado/modificar-nombre-empleado.publisher';
 import { ModificarDocumentoEmpleadoPublisher } from './publishers/staffDeportivo/empleado/modificar-documento-empleado.publisher';
+import { CrearNegociacionPublisher } from './publishers/staffDeportivo/tramite/crear-negociacion.publisher';
+import { CrearTramitePublisher } from './publishers/staffDeportivo/tramite/crear-tramite.publisher';
+import { CrearStaffDeportivoPublisher } from './publishers/staffDeportivo/crear-staff-deportivo.publisher';
+import { NegociarCesiontPublisher } from './publishers/secretaria/cesion/negociar-cesion-publisher';
+import { NegociarTraspasoPublisher } from './publishers/secretaria/traspaso/negociar-traspaso-publisher';
+import { BuscarCesiontPublisher } from './publishers/secretaria/cesion/buscar-cesion.publisher';
+import { BuscarTraspasoPublisher } from './publishers/secretaria/traspaso/buscar-traspaso.publisher';
+import { BuscarContratoPublisher } from './publishers/secretaria/contrato/buscar-contrato.publisher';
+import { BuscarTramitePublisher } from './publishers/staffDeportivo/tramite/buscar-tramite.publisher';
+import { NegociarContratoPublisher } from './publishers/secretaria/contrato/negociar-contrato-publisher';
+import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretaria.publisher';
 
 /**
  * name: el nombre del cliente.
@@ -46,8 +57,24 @@ import { ModificarDocumentoEmpleadoPublisher } from './publishers/staffDeportivo
     ],
     controllers: [],
     providers: [
+
+        CrearSecretariaPublisher,
+        CrearStaffDeportivoPublisher,
         AgregarEmpleadoPublisher,
+        CrearTramitePublisher,
+        CrearNegociacionPublisher,
+        NegociarContratoPublisher,
+        NegociarCesiontPublisher,
+        NegociarTraspasoPublisher,
+
+
         BuscarEmpleadoPublisher,
+        BuscarTramitePublisher,
+        BuscarCesiontPublisher,
+        BuscarTraspasoPublisher,
+        BuscarContratoPublisher,
+
+
         ModificarTipoEmpleadoPublisher,
         ModificarSalarioEmpleadoPublisher,
         ModificarNombreEmpleadoPublisher,
@@ -55,12 +82,27 @@ import { ModificarDocumentoEmpleadoPublisher } from './publishers/staffDeportivo
 
     ],
     exports: [
+        CrearSecretariaPublisher,
+        CrearNegociacionPublisher,
+        NegociarCesiontPublisher,
+        NegociarTraspasoPublisher,
+        NegociarContratoPublisher,
+        
+        CrearTramitePublisher,
+        CrearStaffDeportivoPublisher,
+        
+
         AgregarEmpleadoPublisher,
         BuscarEmpleadoPublisher,
+        BuscarTramitePublisher,
+        BuscarCesiontPublisher,
+        BuscarTraspasoPublisher,
+        BuscarContratoPublisher,
         ModificarTipoEmpleadoPublisher,
         ModificarSalarioEmpleadoPublisher,
         ModificarNombreEmpleadoPublisher,
         ModificarDocumentoEmpleadoPublisher,
+
         ]
 })
 export class MessagingModule { }

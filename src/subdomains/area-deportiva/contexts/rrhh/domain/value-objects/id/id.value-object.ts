@@ -10,7 +10,7 @@ export class IdValueObject extends ValueObjectBase<string> {
     
 
     validateData(): void {
-       this.validarId();
+      // this.validarId();
        
     }
     

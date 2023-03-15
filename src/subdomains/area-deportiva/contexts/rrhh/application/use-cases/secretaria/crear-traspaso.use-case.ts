@@ -6,8 +6,8 @@ import { ITraspasoDomainService } from '../../../domain/services/secretaria/tras
 import { TraspasoNegociadoEventPublisher } from '../../../domain/events/publishers/secretaria/traspaso-negociado.event-publisher';
 import { TraspasoDomainEntity } from '../../../domain/entities/traspaso/traspaso.domain-entity';
 import { SecretariaAggregate } from "../../../domain/aggregates";
-import { ContratoDomainEntity, ITraspasoDomainInterface } from "../../../domain/entities";
 import { FechaValueObject, IdValueObject, CostoValueObject, StateValueObject } from "../../../domain/value-objects";
+import { ITraspasoDomainInterface } from "../../../domain/entities";
 
 export class CrearTraspasoUseCase extends ValueObjectErrorHandler
 implements IUseCase<INegociarTraspasoCommands, ITraspasoNegociadoResponse> {
@@ -32,7 +32,7 @@ implements IUseCase<INegociarTraspasoCommands, ITraspasoNegociadoResponse> {
     }
 
     //Crea todo lo que tiene el comando con los value Object 
-    private async executeCommand(command: INegociarTraspasoCommands):Promise<ContratoDomainEntity | null> {
+    private async executeCommand(command: INegociarTraspasoCommands):Promise<TraspasoDomainEntity | null> {
 
         //Llamada a la funcion que crea lso value object 
         const ValueObject = this.createValueObject(command);
@@ -59,12 +59,14 @@ implements IUseCase<INegociarTraspasoCommands, ITraspasoNegociadoResponse> {
         const state  =  new StateValueObject(command.state);
 
         return {
+
             fechaSalida,
             empleadoId,
             equipoNuevoId,
             equipoSalidaId,
             costo,
             state,
+            
         }
     }
 
@@ -102,7 +104,7 @@ implements IUseCase<INegociarTraspasoCommands, ITraspasoNegociadoResponse> {
 
         if (this.hasErrors() === true)
             throw new ValueObjectException(
-                'Hay algunos errores en el comando ejecutado por AddClientUseCase',
+                'Hay algunos errores en el comando ejecutado por Crear Traspaso UseCase',
                 this.getErrors(),
             );
 

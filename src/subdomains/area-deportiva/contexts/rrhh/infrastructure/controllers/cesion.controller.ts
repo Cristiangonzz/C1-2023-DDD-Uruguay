@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post,Get,Param } from '@nestjs/common';
 import { CesionService } from '../persistence/services/cesion.service';
 import { BuscarCesiontPublisher } from '../messaging/publishers/secretaria/cesion/buscar-cesion.publisher';
 import { NegociarCesiontPublisher } from '../messaging';
@@ -26,8 +26,8 @@ export class CesionController {
         return await useCase.execute(command);
     }
 
-    @Post('/buscar')
-    async buscarCesion(@Body() command: BuscarCesionCommand) {
+    @Get('/buscar/:id')
+    async buscarCesion(@Param('id') command: BuscarCesionCommand) {
         const useCase = new BuscarCesionUseCase(
             this.cesionService,
             this.cesionBuscadoEvent,

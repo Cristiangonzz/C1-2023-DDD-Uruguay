@@ -6,6 +6,7 @@ export interface IEmpleadoDomainService<T extends EmpleadoDomainEntity = Emplead
     modificarSalario(empleadoId:string ,entity: T):Promise<T>;
     modificarDocumento(empleadoId:string ,entity: T):Promise<T>;
     modificarTipoEmpleado(empleadoId:string ,entity: T):Promise<T>;
+   
 
     AgregarEmpleado(empleado:T):Promise<T>;
 

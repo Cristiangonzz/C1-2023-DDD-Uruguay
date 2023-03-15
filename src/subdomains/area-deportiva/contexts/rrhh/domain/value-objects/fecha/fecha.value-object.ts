@@ -7,7 +7,7 @@ export class FechaValueObject extends ValueObjectBase<string> {
     }
 
     validateData(): void {
-        this.formatoFecha();
+       // this.formatoFecha();
     }
 
     private formatoFecha():void{

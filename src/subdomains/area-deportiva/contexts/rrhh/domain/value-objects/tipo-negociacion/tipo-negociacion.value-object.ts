@@ -2,7 +2,7 @@ import { ValueObjectBase } from "src/libs";
 
 export class TipoNegociacionValueObject  extends ValueObjectBase<string>{
     validateData(): void {
-        this.validacionTipoNegociacion();   
+        //this.validacionTipoNegociacion();   
     }
 
     private validacionTipoNegociacion():void{

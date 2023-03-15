@@ -39,7 +39,7 @@ export class ModificarDocumentoEmpleadoUseCase
         this.validateValueObject(ValueObject);
 
         //Llama a la funcion para crear la entidad que se necesita pasandole los value object 
-        const entity = this.createEntityClientDomain(ValueObject);
+        const entity = this.createEntityEmpleadoDomain(ValueObject);
 
         //Llama a la funcion que se conecta con el servicio del agregado 
         return this.exectueOrderAggregateRoot(entity)
@@ -78,7 +78,7 @@ export class ModificarDocumentoEmpleadoUseCase
     }
 
     //Crea la entidad en si
-    private createEntityClientDomain(
+    private createEntityEmpleadoDomain(
         valueObject: IEmpleadoDomainEntity
     ): EmpleadoDomainEntity {
 

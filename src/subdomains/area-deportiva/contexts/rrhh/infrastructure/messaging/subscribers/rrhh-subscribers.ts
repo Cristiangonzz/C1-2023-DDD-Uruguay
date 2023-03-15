@@ -35,6 +35,8 @@ export class CreatedClientController{
         event.data = data;
         event.type = 'rrhh.staff-deportivo-creado'
         event.createAt = Date();
+
+        this.eventRepository.create(event);
        
 
         console.log('--------------------------------------')
@@ -49,8 +51,9 @@ export class CreatedClientController{
 
         const event = new EventEntity();
         event.data = data;
-        event.type = 'rrhh.staff-deportivo-creado'
+        event.type = 'rrhh.empleado-agregado'
         event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -63,8 +66,9 @@ export class CreatedClientController{
 
         const event = new EventEntity();
         event.data = data;
-        event.type = 'rrhh.staff-deportivo-creado'
+        event.type = 'rrhh.documento-empleado-modificado'
         event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -77,8 +81,9 @@ export class CreatedClientController{
 
         const event = new EventEntity();
         event.data = data;
-        event.type = 'rrhh.staff-deportivo-creado'
+        event.type = 'rrhh.nombre-empleado-modificado'
         event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -94,6 +99,8 @@ export class CreatedClientController{
         event.data = data;
         event.type = 'rrhh.salario-empleado-modificado'
         event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -103,6 +110,12 @@ export class CreatedClientController{
     @EventPattern('rrhh.tipo-empleado-modificado')
     tipoEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.tipo-empleado-modificado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -111,6 +124,12 @@ export class CreatedClientController{
     }
     @EventPattern('rrhh.tramite-creado')
     tramiteCreado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.tramite-creado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -122,6 +141,13 @@ export class CreatedClientController{
     @EventPattern('rrhh.secretaria-creado')
     secretariaCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.secretaria-creado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -131,6 +157,12 @@ export class CreatedClientController{
 
     @EventPattern('rrhh.contrato-creado')
     contratoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.contrato-creado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -142,6 +174,12 @@ export class CreatedClientController{
     @EventPattern('rrhh.cesion-creado')
     cesionCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.cesion-creado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -151,6 +189,13 @@ export class CreatedClientController{
 
     @EventPattern('rrhh.traspaso-creado')
     traspasoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.traspaso-creado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -162,6 +207,13 @@ export class CreatedClientController{
     @EventPattern('rrhh.state-contrato-modificado')
     sateContratoModificado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.state-contrato-modificado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -172,6 +224,14 @@ export class CreatedClientController{
     @EventPattern('rrhh.state-cesion-modificado')
     sateCesionModificado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.state-contrato-modificado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -181,6 +241,12 @@ export class CreatedClientController{
 
     @EventPattern('rrhh.state-traspaso-modificado')
     sateTraspasoModificado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.state-traspaso-modificado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -193,6 +259,13 @@ export class CreatedClientController{
     @EventPattern('rrhh.traspaso-buscado')
     TraspasoBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.traspaso-buscado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -202,6 +275,12 @@ export class CreatedClientController{
 
     @EventPattern('rrhh.empleado-buscado')
     empleadoBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.empleado-buscado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
 
         console.log('--------------------------------------')
         console.log('Data: ', data)
@@ -213,6 +292,12 @@ export class CreatedClientController{
     @EventPattern('rrhh.contrato-buscado')
     contratoBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.contrato-buscado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -223,6 +308,12 @@ export class CreatedClientController{
     @EventPattern('rrhh.cesion-buscado')
     cesionBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.cesion-buscado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
         console.log('--------------------------------------')
         console.log('Data: ', data)
         console.log('--------------------------------------')
@@ -231,6 +322,13 @@ export class CreatedClientController{
     }
     @EventPattern('rrhh.tramite-buscado')
     tramiteBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
+
+        const event = new EventEntity();
+        event.data = data;
+        event.type = 'rrhh.tramite-buscado'
+        event.createAt = Date();
+        this.eventRepository.create(event);
+
 
         console.log('--------------------------------------')
         console.log('Data: ', data)

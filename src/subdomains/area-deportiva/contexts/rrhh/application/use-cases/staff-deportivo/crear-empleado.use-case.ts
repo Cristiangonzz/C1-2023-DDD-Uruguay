@@ -54,14 +54,20 @@ export class CrearEmpleadoUseCase
     //Crea los value Object 
     private createValueObject(command: IAgregarEmpleadoCommands): IEmpleadoDomainEntity {
 
+        //Creo los objetos de valor
+        
+
         const nombre= new NombreValueObject(command.nombre);
         const documento= new DocumentoValueObject(command.documento);
-        const tipoEmpleado= new TipoEmpleadoValueObject(command.tipoEmpleado);
-        const nacionalidad = new NacionalidadValueObject(command.nacionalidad);
-        const edad  = new EdadValueObject(command.edad);
-        const salario =  new CostoValueObject(command.salario);
+         const tipoEmpleado= new TipoEmpleadoValueObject(command.tipoEmpleado);
+         const nacionalidad = new NacionalidadValueObject(command.nacionalidad);
+         const edad  = new EdadValueObject(command.edad);
+         const salario =  new CostoValueObject(command.salario);
 
+
+        //Retorno esta interface con los objectos de valor 
         return {
+            
             nombre,
             documento,
             tipoEmpleado,
@@ -75,6 +81,7 @@ export class CrearEmpleadoUseCase
     private validateValueObject(valueObject: IEmpleadoDomainEntity): void {
 
         const {
+           
             nombre,
             documento,
             tipoEmpleado,
@@ -83,27 +90,29 @@ export class CrearEmpleadoUseCase
             salario
         } = valueObject
 
+      
+
         if ( nombre instanceof NombreValueObject && nombre.hasErrors())
             this.setErrors(nombre.getErrors());
 
-        if (documento instanceof DocumentoValueObject && documento.hasErrors())
-            this.setErrors(documento.getErrors());
+          if (documento instanceof DocumentoValueObject && documento.hasErrors())
+              this.setErrors(documento.getErrors());
 
-        if (tipoEmpleado instanceof TipoEmpleadoValueObject && tipoEmpleado.hasErrors())
-        this.setErrors(tipoEmpleado.getErrors());
+          if (tipoEmpleado instanceof TipoEmpleadoValueObject && tipoEmpleado.hasErrors())
+          this.setErrors(tipoEmpleado.getErrors());
 
-        if (nacionalidad instanceof NacionalidadValueObject && nacionalidad.hasErrors())
-        this.setErrors(nacionalidad.getErrors());
+          if (nacionalidad instanceof NacionalidadValueObject && nacionalidad.hasErrors())
+          this.setErrors(nacionalidad.getErrors());
 
-        if (edad instanceof EdadValueObject && edad.hasErrors())
-        this.setErrors(edad.getErrors());
+          if (edad instanceof EdadValueObject && edad.hasErrors())
+          this.setErrors(edad.getErrors());
 
-        if (salario instanceof CostoValueObject && salario.hasErrors())
-        this.setErrors(salario.getErrors());
+          if (salario instanceof CostoValueObject && salario.hasErrors())
+          this.setErrors(salario.getErrors());
 
         if (this.hasErrors() === true)
             throw new ValueObjectException(
-                'Hay algunos errores en el comando ejecutado por AddClientUseCase',
+                'Hay algunos errores en el comando ejecutado por AgregarEmpleadoCaseUse',
                 this.getErrors(),
             );
 
@@ -114,7 +123,10 @@ export class CrearEmpleadoUseCase
         valueObject: IEmpleadoDomainEntity
     ): EmpleadoDomainEntity {
 
+        
+
         const {
+            
             nombre,
             documento,
             tipoEmpleado,
@@ -128,10 +140,10 @@ export class CrearEmpleadoUseCase
             
             nombre: nombre.valueOf(),
             documento: documento.valueOf(),
-            tipoEmpleado:tipoEmpleado.valueOf(),
-            nacionalidad: nacionalidad.valueOf(),
-            edad: edad.valueOf(),
-            salario: salario.valueOf()
+             tipoEmpleado:tipoEmpleado.valueOf(),
+             nacionalidad: nacionalidad.valueOf(),
+             edad: edad.valueOf(),
+             salario: salario.valueOf(),
         })
     }
 

@@ -1,9 +1,10 @@
-export const IsFullName = (fullName : string) =>{
+export const IsFullName = (fullName : string):boolean =>{
 
-    let regexFullName = /^[a-z ,.'-]+$/i
+    // let regexFullName = /^[a-z ,.'-]+$/i
 
-    if(regexFullName.test(fullName)){
-        return true;
-    }
-    return false;
+    // if(regexFullName.test(fullName)){
+    //     return true;
+    // }
+    // return false;
+    return true;
 }

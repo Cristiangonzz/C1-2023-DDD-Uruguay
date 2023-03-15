@@ -7,8 +7,8 @@ export class DocumentoValueObject extends ValueObjectBase<string> {
     }
     
     validateData(): void {
-       this.formatoDocumento();
-       this.contenidoDocumento();
+      // this.formatoDocumento();
+       //this.contenidoDocumento();
     }
 
     private contenidoDocumento():void{

@@ -9,7 +9,7 @@ import { CesionNegociadoEventPublisher } from '../../../../../domain/events/publ
 
 @Injectable()
 export class NegociarCesiontPublisher extends CesionNegociadoEventPublisher {
-    constructor(@Inject('CONSULTORY_CONTEXT') private readonly proxy: ClientProxy) {
+    constructor(@Inject('RRHH_CONTEXT') private readonly proxy: ClientProxy) {
         super(proxy as unknown as IEventPublisher);
     }
 

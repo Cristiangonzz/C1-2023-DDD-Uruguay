@@ -2,7 +2,7 @@
 export interface INegociarCesionCommands {
 
     cesionId?: string ;
-    empleadoId: string ;
+    empleadoId?: string ;
     equipoNuevoId?: string ;
     fechaSalida?: string ;
     costo?: number ;

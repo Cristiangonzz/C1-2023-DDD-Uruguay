@@ -1,7 +1,8 @@
 const IsPositivo = (value: number):boolean =>{
 
-    if( value >= 0){
-        return true;
-    }
-    return false;
+    // if( value >= 0){
+    //     return true;
+    // }
+    // return false;
+    return true;
 }

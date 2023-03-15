@@ -17,7 +17,7 @@ export class TraspasoController {
         private readonly traspasoNegociadoEventPublisher: NegociarTraspasoPublisher,
     ) {}
 
-    @Post('/crear')
+    @Post('crear')
     async crearTraspaso(@Body() command: NegociarTraspasoCommand) {
         const useCase = new CrearTraspasoUseCase(
             this.traspasoService,

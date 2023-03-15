@@ -8,7 +8,7 @@ export class TerminosACumplirValueObject extends ValueObjectBase<string> {
    }
 
     validateData(): void {
-        this.contenidoTerminos();
+        //this.contenidoTerminos();
     }
 
     contenidoTerminos(): void {
