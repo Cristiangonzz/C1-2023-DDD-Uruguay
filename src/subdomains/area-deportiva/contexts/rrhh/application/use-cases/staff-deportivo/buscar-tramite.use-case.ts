@@ -1,7 +1,6 @@
 import { ValueObjectErrorHandler, IUseCase } from "src/libs";
 import { TramiteDomainEntity } from '../../../domain/entities/tramite/tramite.entity.interface';
 import { TramiteBuscadoEventPublisher } from '../../../domain/events/publishers/staff-deporitvo/tramite-buscado.event-publisher';
-import { IStaffDeportivoDomainService } from '../../../domain/services/staff-Deportivo/staff-deportivo.domain-service';
 import { ItramiteBuscadoResponse } from '../../../domain/interfaces/responses/staff-deportivo/tamite-agregado.response';
 
 import { IBuscarTramiteCommands } from '../../../domain/interfaces/commands/staff-deportivo/buscar-tramite.commands';

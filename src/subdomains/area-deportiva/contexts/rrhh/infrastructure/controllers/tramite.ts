@@ -1,11 +1,9 @@
 import { Body, Controller, Post,Get ,Param} from '@nestjs/common';
 import { TramiteService } from '../persistence/services/tramite.service';
-import { TramiteAgregadoEventPublisher } from '../../domain/events/publishers/staff-deporitvo/tramite-agregado.event-publisher';
 import { AgregarTramiteUseCase } from '../../application/use-cases/staff-deportivo/agregar-tramite.use-case';
 import { CrearTramiteCommand } from '../utils/commands/staffDeportivo/tramite/crear-tramite.commands';
 import { BuscarTramiteCommand } from '../utils/commands/staffDeportivo/tramite/buscar-tramite.commands';
 import { BuscarTramiteUseCase } from '../../application';
-import { TramiteBuscadoEventPublisher } from '../../domain/events/publishers';
 import { CrearTramitePublisher } from '../messaging/publishers/staffDeportivo/tramite/crear-tramite.publisher';
 import { BuscarTramitePublisher } from '../messaging/publishers/staffDeportivo/tramite/buscar-tramite.publisher';
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get,Put ,Param} from '@nestjs/common';
 import { EmpleadoService } from '../persistence/services/empleado.service';
 import { AgregarEmpleadoCommand } from '../utils/commands/staffDeportivo/empleado/agregar-empleado.commands';
 import { CrearEmpleadoUseCase } from '../../application/use-cases/staff-deportivo/crear-empleado.use-case';
@@ -40,7 +40,7 @@ export class EmpleadoController {
         return await useCase.execute(command);
     }
 
-    @Post('/modificar-agregar')
+    @Put('/modificar-nombre')
     async modificarNombreEmpleado(@Body() command: ModificarNombreEmpleadoCommand) {
         const useCase = new ModificarNombreEmpleadoUseCase(
             this.empleadoService,
@@ -48,7 +48,7 @@ export class EmpleadoController {
         );
         return await useCase.execute(command);
     }
-    @Post('/modificar-documento')
+    @Put('/modificar-documento')
     async modificarDocumentoEmpleado(@Body() command: ModificarDocumentoEmpleadoCommand) {
         const useCase = new ModificarDocumentoEmpleadoUseCase(
             this.empleadoService,
@@ -57,7 +57,7 @@ export class EmpleadoController {
         return await useCase.execute(command);
     }
     
-    @Post('/modificar-tipo')
+    @Put('/modificar-tipo')
     async modificarTipoEmpleado(@Body() command: ModificarTipoEmpleadoCommand) {
         const useCase = new ModificarTipoEmpleadoUseCase(
             this.empleadoService,
@@ -66,7 +66,7 @@ export class EmpleadoController {
         return await useCase.execute(command);
     }
 
-    @Post('/modificar-salario')
+    @Put('/modificar-salario')
     async modificarSalarioEmpleado(@Body() command: ModificarSalarioEmpleadoCommand) {
         const useCase = new ModificarSalarioEmpleadoUseCase(
             this.empleadoService,
@@ -77,8 +77,8 @@ export class EmpleadoController {
 
 
 
-    @Get('/buscar')
-    async buscarEmpleado(@Body() command: BuscarEmpleadoCommand) {
+    @Get('/buscar/:id')
+    async buscarEmpleado(@Param('id') command: BuscarEmpleadoCommand) {
         const useCase = new BuscarEmpleadoUseCase(
             this.empleadoService,
             this.empleadoBuscadoEven,
