@@ -10,7 +10,7 @@ import { EquipoTraspasoModificadoEventPublisher } from '../../../../../domain/ev
 
 @Injectable()
 export class  ModificarEquipoNuevoTraspasoPublisher extends EquipoTraspasoModificadoEventPublisher {
-    constructor(@Inject('CONSULTORY_CONTEXT') private readonly proxy: ClientProxy) {
+    constructor(@Inject('RRHH_CONTEXT') private readonly proxy: ClientProxy) {
         super(proxy as unknown as IEventPublisher);
     }
 

@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MySqlModule } from './databases/mysql/mysql.module';
 import { StaffDeportivoService, EmpleadoService, TramiteService, SecretariaService, ContratoService, CesionService, TraspasoService, NegociacionService } from './services';
+import { EventService } from './services/event.service';
 
 @Module({
   imports: [MySqlModule],
@@ -14,8 +15,9 @@ import { StaffDeportivoService, EmpleadoService, TramiteService, SecretariaServi
     CesionService,
     TraspasoService,
     NegociacionService,
-
     
+    EventService,
+      
 ],
   exports: [
     StaffDeportivoService,
@@ -26,6 +28,8 @@ import { StaffDeportivoService, EmpleadoService, TramiteService, SecretariaServi
     CesionService,
     TraspasoService,
     NegociacionService,
+
+    EventService,
 
   ],
 })

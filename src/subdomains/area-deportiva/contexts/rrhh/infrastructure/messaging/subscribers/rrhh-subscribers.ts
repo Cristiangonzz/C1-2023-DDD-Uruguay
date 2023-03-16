@@ -1,8 +1,5 @@
-
-
 import { Controller } from "@nestjs/common";
 import { Ctx, EventPattern, KafkaContext, Payload } from "@nestjs/microservices";
-import { EventEntity } from '../../persistence/entities/event.entity';
 import { EventMySqlEntity } from "../../persistence/databases/mysql/entities/event-mysql.entity";
 import { EventMySqlService } from "../../persistence/databases/mysql/services/event.service";
 
@@ -27,13 +24,13 @@ export class CreandoEventosDeRRHHController{
      * 
      * @param {*} data
      * @param {KafkaContext} context
-     * @memberof CreatedClientController
+     * @memberof CreandoEventosDeRRHHController
      */
     @EventPattern('rrhh.staff-deportivo-creado')
     staffDeportivoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.staff-deportivo-creado'
         event.createAt = Date();
 
@@ -66,8 +63,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.documento-empleado-modificado')
     documentoEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.documento-empleado-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -81,8 +78,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.nombre-empleado-modificado')
     nombreEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.nombre-empleado-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -97,8 +94,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.salario-empleado-modificado')
     salarioEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.salario-empleado-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -112,8 +109,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.tipo-empleado-modificado')
     tipoEmpeladoModificadoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.tipo-empleado-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -127,8 +124,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.tramite-creado')
     tramiteCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.tramite-creado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -140,13 +137,13 @@ export class CreandoEventosDeRRHHController{
         console.log('--------------------------------------')
     }
 
-    @EventPattern('rrhh.secretaria-creado')
+    @EventPattern('rrhh.secretaria-creada')
     secretariaCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
         
-        const event = new EventEntity();
-        event.data = data;
-        event.type = 'rrhh.secretaria-creado'
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
+        event.type = 'rrhh.secretaria-creada'
         event.createAt = Date();
         this.eventService.crearEvento(event)
 
@@ -157,12 +154,12 @@ export class CreandoEventosDeRRHHController{
         console.log('--------------------------------------')
     }
 
-    @EventPattern('rrhh.contrato-creado')
+    @EventPattern('rrhh.contrato-negociado')
     contratoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
-        event.type = 'rrhh.contrato-creado'
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
+        event.type = 'rrhh.contrato-negociado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
 
@@ -173,12 +170,12 @@ export class CreandoEventosDeRRHHController{
         console.log('--------------------------------------')
     }
 
-    @EventPattern('rrhh.cesion-creado')
+    @EventPattern('rrhh.cesion-negociada')
     cesionCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
-        event.type = 'rrhh.cesion-creado'
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
+        event.type = 'rrhh.cesion-negociada'
         event.createAt = Date();
         this.eventService.crearEvento(event)
 
@@ -189,12 +186,12 @@ export class CreandoEventosDeRRHHController{
         console.log('--------------------------------------')
     }
 
-    @EventPattern('rrhh.traspaso-creado')
+    @EventPattern('rrhh.negociar-traspaso')
     traspasoCreado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
-        event.type = 'rrhh.traspaso-creado'
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
+        event.type = 'rrhh.negociar-traspaso'
         event.createAt = Date();
         this.eventService.crearEvento(event)
 
@@ -210,8 +207,8 @@ export class CreandoEventosDeRRHHController{
     sateContratoModificado(@Payload() data: any, @Ctx() context: KafkaContext){
 
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.state-contrato-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -227,9 +224,9 @@ export class CreandoEventosDeRRHHController{
     sateCesionModificado(@Payload() data: any, @Ctx() context: KafkaContext){
 
 
-        const event = new EventEntity();
-        event.data = data;
-        event.type = 'rrhh.state-contrato-modificado'
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
+        event.type = 'rrhh.state-cesion-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
 
@@ -244,8 +241,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.state-traspaso-modificado')
     sateTraspasoModificado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.state-traspaso-modificado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -261,8 +258,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.traspaso-buscado')
     TraspasoBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.traspaso-buscado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -278,8 +275,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.empleado-buscado')
     empleadoBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.empleado-buscado'
         event.createAt = Date();
         this.eventService.crearEvento(event)
@@ -294,10 +291,11 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.contrato-buscado')
     contratoBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.contrato-buscado'
         event.createAt = Date();
+        
         this.eventService.crearEvento(event)
 
         console.log('--------------------------------------')
@@ -307,12 +305,12 @@ export class CreandoEventosDeRRHHController{
         console.log('--------------------------------------')
     }
 
-    @EventPattern('rrhh.cesion-buscado')
+    @EventPattern('rrhh.cesion-buscada')
     cesionBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
-        event.type = 'rrhh.cesion-buscado'
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
+        event.type = 'rrhh.cesion-buscada'
         event.createAt = Date();
         this.eventService.crearEvento(event)
 
@@ -325,8 +323,8 @@ export class CreandoEventosDeRRHHController{
     @EventPattern('rrhh.tramite-buscado')
     tramiteBuscado(@Payload() data: any, @Ctx() context: KafkaContext){
 
-        const event = new EventEntity();
-        event.data = data;
+        const event = new EventMySqlEntity();
+        event.data = JSON.stringify(data);
         event.type = 'rrhh.tramite-buscado'
         event.createAt = Date();
         this.eventService.crearEvento(event)

@@ -26,8 +26,8 @@ export class CesionController {
         return await useCase.execute(command);
     }
 
-    @Get('/buscar/:id')
-    async buscarCesion(@Param('id') command: BuscarCesionCommand) {
+    @Get('/buscar')
+    async buscarCesion(@Body() command: BuscarCesionCommand) {
         const useCase = new BuscarCesionUseCase(
             this.cesionService,
             this.cesionBuscadoEvent,

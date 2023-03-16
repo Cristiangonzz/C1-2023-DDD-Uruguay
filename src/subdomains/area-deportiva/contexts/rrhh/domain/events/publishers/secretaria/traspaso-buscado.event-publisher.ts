@@ -7,7 +7,7 @@ extends EventPublisherBase<Response>{
     
 publish<Result = any>(): Promise<Result> {
     return this.emit(
-        'rrhh.traspaso-buscada ',
+        'rrhh.traspaso-buscado',
         JSON.stringify({ data: this.response })
     )
 }

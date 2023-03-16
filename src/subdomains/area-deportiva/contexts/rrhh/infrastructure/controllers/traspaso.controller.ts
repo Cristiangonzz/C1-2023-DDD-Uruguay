@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post ,Get} from '@nestjs/common';
 import { TraspasoService } from '../persistence/services/traspaso.service';
 import { CrearTraspasoUseCase } from '../../application/use-cases/secretaria/crear-traspaso.use-case';
 import { NegociarTraspasoPublisher } from '../messaging/publishers/secretaria/traspaso/negociar-traspaso-publisher';
@@ -26,7 +26,7 @@ export class TraspasoController {
         return await useCase.execute(command);
     }
 
-    @Post('/buscar')
+    @Get('/buscar')
     async buscarTraspaso(@Body() command: BuscarTraspasoCommand) {
         const useCase = new BuscarTraspasoUseCase(
             this.traspasoService,

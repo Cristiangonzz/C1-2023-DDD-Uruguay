@@ -7,7 +7,7 @@ export abstract class StateTraspasoModificadoEventPublisher
         
     publish<Result = any>(): Promise<Result> {
         return this.emit(
-            'rrhh.state-traspaso-modificado.',
+            'rrhh.state-traspaso-modificado',
             JSON.stringify({ data: this.response })
         )
     }

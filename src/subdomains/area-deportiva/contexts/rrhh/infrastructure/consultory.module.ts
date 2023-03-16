@@ -8,12 +8,12 @@ import { CesionController } from './controllers/cesion.controller';
 import { TraspasoController } from './controllers/traspaso.controller';
 import { StaffDeportivoController } from './controllers/staff-deportivo.controller';
 import { SecretariaController } from './controllers/secretaria.controller';
-import { EventMySqlService } from "./persistence/databases/mysql/services/event.service";
 
 
 @Module({
     imports: [PersistenceModule,MessagingModule],
     controllers: [
+//CreandoEventosDeRRHHController
       EmpleadoController,
       TramiteController,
       ContratoController,
@@ -23,7 +23,6 @@ import { EventMySqlService } from "./persistence/databases/mysql/services/event.
       SecretariaController,
       ],
     providers: [
-      
     ],
     exports: [
      

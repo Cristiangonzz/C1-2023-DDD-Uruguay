@@ -6,7 +6,7 @@ extends EventPublisherBase<Response>{
     
 publish<Result = any>(): Promise<Result> {
     return this.emit(
-        'management_system.registered-order',
+        'rrhh.secretaria-creada',
         JSON.stringify({ data: this.response })
     )
 }

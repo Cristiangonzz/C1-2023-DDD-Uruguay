@@ -1,13 +1,11 @@
 import { ValueObjectErrorHandler, IUseCase, ValueObjectException } from "src/libs";
-import { EmpleadoBuscadoEventPublisher } from "../../../domain/events/publishers/staff-deporitvo/empleado-buscado.event-publisher";
-import { TipoEmpleadoModificadoEventPublisher } from '../../../domain/events/publishers/empleado/tipo-empleado-modificado';
 import { StaffDeportivoAggregate } from "../../../domain/aggregates";
 import { EmpleadoDomainEntity, IEmpleadoDomainEntity } from "../../../domain/entities";
 import { IModificarSalarioEmpleadoCommands } from "../../../domain/interfaces/commands/staff-deportivo";
 import { ISalarioEmpleadoModificadoResponse } from "../../../domain/interfaces/responses/staff-deportivo";
 import { IdValueObject, CostoValueObject } from "../../../domain/value-objects";
 import { IEmpleadoDomainService } from '../../../domain/services/staff-Deportivo/empleado.domain-service';
-import { SalarioEmpleadoModificadoEventPublisher } from '../../../domain/events/publishers/staff-deporitvo/salario-empleado-modificado.event-publisher';
+import { SalarioModificadoEventPublisher } from "../../../domain/events/publishers";
 
 export class ModificarSalarioEmpleadoUseCase 
     extends ValueObjectErrorHandler
@@ -17,7 +15,7 @@ export class ModificarSalarioEmpleadoUseCase
 
         constructor(
             private readonly empleadoService: IEmpleadoDomainService,
-            private readonly salarioEmpleadoModificadoEvent : SalarioEmpleadoModificadoEventPublisher,
+            private readonly salarioEmpleadoModificadoEvent : SalarioModificadoEventPublisher,
         ){
             super();
             this.aggregateRoot = new StaffDeportivoAggregate({empleadoService,salarioEmpleadoModificadoEvent});

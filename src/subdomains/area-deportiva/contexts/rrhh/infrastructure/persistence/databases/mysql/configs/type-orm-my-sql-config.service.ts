@@ -27,6 +27,7 @@ export class TypeOrmMySqlConfigService implements TypeOrmOptionsFactory {
         ContratoMySqlEntity,
         TraspasoMySqlEntity,
         CesionMySqlEntity,
+        
         EventMySqlEntity,
       ],
       synchronize: true,

@@ -6,7 +6,6 @@ import { ITramiteDomainService } from '../../services/staff-Deportivo/tramite.do
 import { EmpleadoAgregadoEventPublisher } from '../../events/publishers/staff-deporitvo/empleado-agregado.event-publisher';
 import { StaffDeportivoCreadoEventPublisher } from '../../events/publishers/staff-deporitvo/staff-depotivo-creado.event-publisher';
 import { TramiteAgregadoEventPublisher } from '../../events/publishers/staff-deporitvo/tramite-agregado.event-publisher';
-import { SalarioEmpleadoModificadoEventPublisher } from '../../events/publishers/staff-deporitvo/salario-empleado-modificado.event-publisher';
 import { EmpleadoDomainEntity } from '../../entities/empleado/EmpleadoDomainEntity';
 import { TramiteDomainEntity } from '../../entities/tramite/tramite.entity.interface';
 import { FechaTramiteModificadaEventPublisher } from '../../events/publishers/staff-deporitvo/fecha-tramite-modificada.event-publisher';
@@ -107,7 +106,7 @@ export class StaffDeportivoAggregate implements IStaffDeportivoDomainService  , 
             staffDeportivoCreadoEvent?: StaffDeportivoCreadoEventPublisher;
            // directivaModificadaEvent?: StaffDeportivoModificadoEventPublisher,
            empleadoAgregadoEvent?: EmpleadoAgregadoEventPublisher;
-           salarioEmpleadoModificadoEvent?: SalarioEmpleadoModificadoEventPublisher;
+           salarioEmpleadoModificadoEvent?: SalarioModificadoEventPublisher;
            empleadoBuscadoEvent?: EmpleadoBuscadoEventPublisher;
            nombreModificadoEvent?: NombreModificadoEventPublisher;
            documentoModificadoEvent?: DocumentoModificadoEventPublisher;

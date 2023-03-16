@@ -17,9 +17,6 @@ import { BuscarContratoPublisher } from './publishers/secretaria/contrato/buscar
 import { BuscarTramitePublisher } from './publishers/staffDeportivo/tramite/buscar-tramite.publisher';
 import { NegociarContratoPublisher } from './publishers/secretaria/contrato/negociar-contrato-publisher';
 import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretaria.publisher';
-import { CreandoEventosDeRRHHController } from './subscribers';
-import { EventMySqlService } from '../persistence/databases/mysql/services/event.service';
-import { EventRepository } from '../persistence/databases/mysql/repositories/event.repository';
 
 /**
  * name: el nombre del cliente.
@@ -57,12 +54,10 @@ import { EventRepository } from '../persistence/databases/mysql/repositories/eve
         ]),
     ],
     controllers: [
-        CreandoEventosDeRRHHController,
+       
     ],
     providers: [
        
-        EventMySqlService,
-        EventRepository,
         CrearSecretariaPublisher,
         CrearStaffDeportivoPublisher,
         AgregarEmpleadoPublisher,
@@ -87,7 +82,6 @@ import { EventRepository } from '../persistence/databases/mysql/repositories/eve
 
     ],
     exports: [
-        
         CrearSecretariaPublisher,
         CrearNegociacionPublisher,
         NegociarCesiontPublisher,
