@@ -1,9 +1,11 @@
 const IsString = (value: string):boolean => {
 
-    // if(typeof value === "string"){
-    //     return true;
-    // }
-    // return false;
-    return true;
+    if(typeof value === "string"){
+        return true;
+    }else{
+
+        return false;
+    }
+    
     
 }

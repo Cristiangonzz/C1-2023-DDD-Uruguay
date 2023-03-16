@@ -1,5 +1,5 @@
 import { ISecretariaDomainService } from '../../../services/secretaria/secretaria.domain-service';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 import { SecretariaDomainEntity } from '../../../entities/secretaria/secretaria.domain-entity';
 import { secretariaCreadaEventPublisher } from '../../../events/publishers/secretaria/secretaria-creada.event-publisher';
 

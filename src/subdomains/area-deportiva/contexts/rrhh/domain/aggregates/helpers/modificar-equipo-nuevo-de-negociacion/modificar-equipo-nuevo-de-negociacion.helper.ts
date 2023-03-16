@@ -1,7 +1,7 @@
 import { NegociacionDomainEntity } from '../../../entities/negociacion/negociacion.domain-entity';
 import { EquipoNuevoNegociacionModificadoEventPublisher } from '../../../events/publishers/negociacion';
 import { INegociacionDomainService } from '../../../services/staff-Deportivo/negociacion.domain-service';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';
 
 export const ModificarEquipoNuevoDeNegociacionHelper = async (
     negociacionId:string,

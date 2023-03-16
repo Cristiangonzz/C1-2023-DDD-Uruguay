@@ -1,5 +1,4 @@
-import { AggregateRootException } from "src/libs";
-import { TramiteDomainEntity } from "../../../entities";
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';import { TramiteDomainEntity } from "../../../entities";
 import { TramiteBuscadoEventPublisher } from '../../../events/publishers/staff-deporitvo/tramite-buscado.event-publisher';
 import { ITramiteDomainService } from '../../../services/staff-Deportivo/tramite.domain-service';
 

@@ -2,7 +2,7 @@
 import { EmpleadoDomainEntity } from '../../../entities/empleado/EmpleadoDomainEntity';
 import { IEmpleadoDomainService } from '../../../services/staff-Deportivo/empleado.domain-service';
 import { NombreModificadoEventPublisher } from '../../../events/publishers/empleado/nombre-modificado.event-publisher';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 export const  ModificarNombreEmpleadoHelper = async (
     empleadoId:string,
     entity: EmpleadoDomainEntity,

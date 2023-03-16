@@ -1,4 +1,5 @@
-import { ValueObjectBase } from "src/libs";
+import { ValueObjectBase } from '../../../../../../../libs/sofka/bases/object-value.base';
+
 
 export class TipoNegociacionValueObject  extends ValueObjectBase<string>{
     validateData(): void {

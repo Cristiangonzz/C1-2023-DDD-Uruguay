@@ -1,4 +1,4 @@
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';
 import { CesionDomainEntity } from '../../../entities/cesion/cesion.domain-entity';
 import { ICesionDomainService } from '../../../services/secretaria/cesion.domain-service';
 import { CostoModificadoEventPublisher } from '../../../events/publishers/cesion/costo-modificado.event-publisher';

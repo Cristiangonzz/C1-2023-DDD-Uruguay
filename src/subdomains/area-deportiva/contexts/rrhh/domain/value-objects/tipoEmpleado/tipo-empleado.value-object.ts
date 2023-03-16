@@ -8,12 +8,12 @@ export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
     }
 
     validateData() : void {
-        //this.validacionTypeEmpleado();
+       //this.validacionTypeEmpleado();
     }
 
     private validacionTypeEmpleado() : void {
 
-        if(this.value && !IsTypeEmpleado(this.value)){
+        if(this.value && IsTypeEmpleado(this.value) === true){
             const error = {
                 field: "Empleado",
                 message: "El tipo de empleado es incorrecto"
@@ -21,6 +21,7 @@ export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
             this.setError(error);
         }
     }
+
     private validacionEmpleado():void{
         if(this.value && !IsString(this.value)){
             const error = {

@@ -1,4 +1,4 @@
-import { ValueObjectBase } from 'src/libs';
+import { ValueObjectBase } from '../../../../../../../libs/sofka/bases/object-value.base';
 
 export class DocumentoValueObject extends ValueObjectBase<string> {
     
@@ -7,26 +7,18 @@ export class DocumentoValueObject extends ValueObjectBase<string> {
     }
     
     validateData(): void {
-      // this.formatoDocumento();
-       //this.contenidoDocumento();
+       //this.formatoDocumento();
+       this.contenidoDocumento();
     }
 
     private contenidoDocumento():void{
         
-        if(this.value.length >9){
+        if(this.value.length >8){
             const error = {
                 field:"Documento",
                 message: "El documento contiene mas de 9 numeros"
             }
 
-            this.setError(error);
-        }
-
-        if(this.value.length <9){
-            const error = {
-                field:"Documento",
-                message: "El documento contiene menos de 9 numeros"
-            }
             this.setError(error);
         }
     }

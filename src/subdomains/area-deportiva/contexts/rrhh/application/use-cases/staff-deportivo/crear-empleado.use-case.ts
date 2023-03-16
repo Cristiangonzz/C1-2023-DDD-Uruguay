@@ -92,7 +92,7 @@ export class CrearEmpleadoUseCase
 
       
 
-        if ( nombre instanceof NombreValueObject && nombre.hasErrors())
+          if ( nombre instanceof NombreValueObject && nombre.hasErrors())
             this.setErrors(nombre.getErrors());
 
           if (documento instanceof DocumentoValueObject && documento.hasErrors())

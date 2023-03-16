@@ -1,4 +1,4 @@
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 import { TraspasoDomainEntity } from '../../../entities';
 import { TraspasoNegociadoEventPublisher } from '../../../events/publishers/secretaria/traspaso-negociado.event-publisher';
 import { ITraspasoDomainService } from '../../../services/secretaria/traspaso.domain-service';

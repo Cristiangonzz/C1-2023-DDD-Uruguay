@@ -1,4 +1,4 @@
-import { AggregateRootException } from "src/libs";
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';
 import { NegociacionDomainEntity } from "../../../entities";
 import { INegociacionDomainService } from "../../../services";
 import { EquipoSalidaNegociacionModificadoEventPublisher } from '../../../events/publishers/negociacion/equipo-salida-modificado.event-publisher';

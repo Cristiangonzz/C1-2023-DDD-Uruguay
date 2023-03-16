@@ -1,7 +1,7 @@
 import { StaffDeportivoDomainEntity } from '../../../entities/staff-deportivo/staff-deportivo.entity';
 import { IStaffDeportivoDomainService } from '../../../services/staff-Deportivo/staff-deportivo.domain-service';
 import { StaffDeportivoCreadoEventPublisher } from '../../../events/publishers/staff-deporitvo/staff-depotivo-creado.event-publisher';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 
 export const  CrearStaffDeportivoHelper = async (
     entity: StaffDeportivoDomainEntity,

@@ -1,5 +1,4 @@
-import { AggregateRootException } from "src/libs";
-import { SecretariaDomainEntity } from "../../entities/secretaria/secretaria.domain-entity";
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';import { SecretariaDomainEntity } from "../../entities/secretaria/secretaria.domain-entity";
 import { CesionNegociadoEventPublisher } from "../../events/publishers/secretaria/cesion-negociado.event-publisher";
 import { ContratoNegociadoEventPublisher } from '../../events/publishers/secretaria/contrato-negociado.event-publisher';
 import { secretariaCreadaEventPublisher } from '../../events/publishers/secretaria/secretaria-creada.event-publisher';

@@ -1,6 +1,6 @@
 import { TramiteAgregadoEventPublisher } from '../../../events/publishers/staff-deporitvo/tramite-agregado.event-publisher';
 import { TramiteDomainEntity } from '../../../entities/tramite/tramite.entity.interface';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 import { ITramiteDomainService } from '../../../services/staff-Deportivo/tramite.domain-service';
 
 export const  CrearTramiteHelper = async (

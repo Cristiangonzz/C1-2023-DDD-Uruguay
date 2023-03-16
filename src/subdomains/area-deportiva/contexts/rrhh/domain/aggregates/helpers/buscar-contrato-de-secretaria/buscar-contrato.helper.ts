@@ -1,4 +1,4 @@
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';import { TramiteDomainEntity } from "../../../entities";
 import { ContratoBuscadaEventPublisher } from '../../../events/publishers/secretaria/contrato-buscado.event-publisher';
 import { ContratoDomainEntity } from '../../../entities/contrato/contrato.domain-entity';
 import { IContratoDomainService } from '../../../services/secretaria/contrato.domain-service';

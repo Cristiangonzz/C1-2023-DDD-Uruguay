@@ -1,6 +1,6 @@
 import { ITramiteDomainService } from '../../../services/staff-Deportivo/tramite.domain-service';
 import { FechaTramiteModificadaEventPublisher } from '../../../events/publishers/staff-deporitvo/fecha-tramite-modificada.event-publisher';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';
 import { TramiteDomainEntity } from '../../../entities';
 
 export const ModificarFechaTramiteHelper = async (

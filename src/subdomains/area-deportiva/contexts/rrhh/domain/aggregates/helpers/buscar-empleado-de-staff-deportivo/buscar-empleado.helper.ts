@@ -1,5 +1,5 @@
 import { EmpleadoBuscadoEventPublisher } from '../../../events/publishers/staff-deporitvo/empleado-buscado.event-publisher';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';import { TramiteDomainEntity } from "../../../entities";
 import { EmpleadoDomainEntity } from '../../../entities';
 import { IEmpleadoDomainService } from '../../../services/staff-Deportivo/empleado.domain-service';
 

@@ -1,8 +1,7 @@
 
-import { AggregateRootException } from "src/libs";
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 import { NegociacionDomainEntity } from "../../../entities";
 import { INegociacionDomainService } from "../../../services";
-import { EquipoNuevoNegociacionModificadoEventPublisher } from "../../../events/publishers/negociacion";
 import { StateNegociacionModificadoEventPublisher } from '../../../events/publishers/negociacion/state-modificado.event-publisher';
 
 export const ModificarStateDeNegociacionHelper = async (

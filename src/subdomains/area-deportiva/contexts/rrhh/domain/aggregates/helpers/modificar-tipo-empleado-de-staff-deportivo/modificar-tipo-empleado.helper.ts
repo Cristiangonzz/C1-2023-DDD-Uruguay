@@ -1,6 +1,6 @@
 import { EmpleadoDomainEntity } from '../../../entities/empleado/EmpleadoDomainEntity';
 import { IEmpleadoDomainService } from '../../../services/staff-Deportivo/empleado.domain-service';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from "../../../../../../../../libs/sofka/exceptions/aggregate-root.exception";
 import { TipoEmpleadoModificadoEventPublisher } from '../../../events/publishers/empleado/tipo-empleado-modificado';
 export const  ModificarTipoEmpleadoHelper = async (
     empleadoId:string,

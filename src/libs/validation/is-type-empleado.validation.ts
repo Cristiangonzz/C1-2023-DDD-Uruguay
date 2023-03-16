@@ -1,22 +1,21 @@
 const IsTypeEmpleado = (type : string):boolean =>{
    
-    // enum Empleados {
-    //     Entrenador,
-    //     SegundoEntrenador,
-    //     Negociador,
-    //     Jugador,
-    //     Directivo,
-    //     Reclutador,
-    //     Administrativo,
-    //     Medico,
-       
-    // }
 
-    // for(let i = 0; i<8 ;i++){
-    //     if(type == Empleados[i]){
-    //         return true;
-    //     }
-    // }
-    // return false;
-    return true;
+    if(
+        type == "Entrenador" 
+        || type == "Jugador" 
+        || type == "SegundoEntrenador" 
+        || type == "Negociador" 
+        || type == "Directivo" 
+        || type == "Reclutador" 
+        || type == "Administrativo" 
+        || type == "Medico" 
+        ) {
+            return false;
+        }else{
+            return true;
+        }
+
+
+ 
 }

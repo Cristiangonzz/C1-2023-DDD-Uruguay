@@ -1,4 +1,4 @@
-import { ValueObjectBase } from 'src/libs';
+import { ValueObjectBase } from '../../../../../../../libs/sofka/bases/object-value.base';
 
 export class EdadValueObject extends ValueObjectBase<number> {
    

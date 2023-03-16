@@ -1,5 +1,6 @@
-import { ValueObjectBase } from "src/libs";
-import { IsFullName } from "src/libs/validation/is-nombre.validation";
+import { ValueObjectBase } from '../../../../../../../libs/sofka/bases/object-value.base';
+
+import { IsFullName } from "../../../../../../../libs/validation/is-nombre.validation";
 
 export class NombreValueObject extends ValueObjectBase<string>{
 
@@ -14,7 +15,7 @@ export class NombreValueObject extends ValueObjectBase<string>{
 
     private formatoFullName(){
 
-        if(this.value && !IsFullName(this.value)){
+        if(this.value && IsFullName(this.value,100) === true){
             const error = {
                 field: "fullName",
                 message: "El formato del nombre es invalido"
@@ -29,24 +30,6 @@ export class NombreValueObject extends ValueObjectBase<string>{
             const error = {
                 field: "fullName",
                 message: "El nombre no puede estar vacio",
-            }
-            this.setError(error);
-        }
-
-        if(this.value.length > 200){
-           
-            const error = {
-                field: "fullName",
-                message: "El nombre es muy extenso",
-            }
-            this.setError(error);
-        }
-
-        if(this.value.length < 4){
-           
-            const error = {
-                field: "fullName",
-                message: "El nombre es muy corto",
             }
             this.setError(error);
         }

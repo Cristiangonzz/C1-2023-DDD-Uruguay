@@ -1,6 +1,6 @@
 import { CesionDomainEntity } from '../../../entities/cesion/cesion.domain-entity';
 import { CesionBuscadaEventPublisher } from '../../../events/publishers/secretaria/cesion-buscada.event-publisher';
-import { AggregateRootException } from 'src/libs';
+import { AggregateRootException } from '../../../../../../../../libs/sofka/exceptions/aggregate-root.exception';import { TramiteDomainEntity } from "../../../entities";
 import { ICesionDomainService } from '../../../services/secretaria/cesion.domain-service';
 
 export const BuscarCesionHelper = async (
