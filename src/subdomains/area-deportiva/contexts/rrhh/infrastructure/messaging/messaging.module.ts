@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { AgregarEmpleadoPublisher } from './publishers/staffDeportivo/empleado/agregar-empleado.publisher';
-import { NombreModificadoEventPublisher } from '../../domain/events/publishers/empleado/nombre-modificado.event-publisher';
-import { TipoEmpleadoModificadoEventPublisher } from '../../domain/events/publishers/empleado/tipo-empleado-modificado';
 import { BuscarEmpleadoPublisher } from './publishers/staffDeportivo/empleado/buscar-empleado.publisher';
 import { ModificarTipoEmpleadoPublisher } from './publishers/staffDeportivo/empleado/modificar-tipo-empleado.publisher';
 import { ModificarSalarioEmpleadoPublisher } from './publishers/staffDeportivo/empleado/modificar-salario-empleado.publisher';
@@ -19,6 +17,9 @@ import { BuscarContratoPublisher } from './publishers/secretaria/contrato/buscar
 import { BuscarTramitePublisher } from './publishers/staffDeportivo/tramite/buscar-tramite.publisher';
 import { NegociarContratoPublisher } from './publishers/secretaria/contrato/negociar-contrato-publisher';
 import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretaria.publisher';
+import { CreandoEventosDeRRHHController } from './subscribers';
+import { EventMySqlService } from '../persistence/databases/mysql/services/event.service';
+import { EventRepository } from '../persistence/databases/mysql/repositories/event.repository';
 
 /**
  * name: el nombre del cliente.
@@ -55,9 +56,13 @@ import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretar
             },
         ]),
     ],
-    controllers: [],
+    controllers: [
+        CreandoEventosDeRRHHController,
+    ],
     providers: [
-
+       
+        EventMySqlService,
+        EventRepository,
         CrearSecretariaPublisher,
         CrearStaffDeportivoPublisher,
         AgregarEmpleadoPublisher,
@@ -82,6 +87,7 @@ import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretar
 
     ],
     exports: [
+        
         CrearSecretariaPublisher,
         CrearNegociacionPublisher,
         NegociarCesiontPublisher,

@@ -42,7 +42,7 @@ import { EventMySqlService } from './services/event.service';
   ],
   controllers: [],
   providers: [
-    
+  
     TypeOrmMySqlConfigService,
     
     StaffDeportivoMySqlService,

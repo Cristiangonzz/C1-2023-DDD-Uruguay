@@ -2,13 +2,12 @@
 
 import { Controller } from "@nestjs/common";
 import { Ctx, EventPattern, KafkaContext, Payload } from "@nestjs/microservices";
-import { EventRepository } from '../../persistence/databases/mysql/repositories/event.repository';
 import { EventEntity } from '../../persistence/entities/event.entity';
 import { EventMySqlEntity } from "../../persistence/databases/mysql/entities/event-mysql.entity";
 import { EventMySqlService } from "../../persistence/databases/mysql/services/event.service";
 
 @Controller()
-export class CreatedClientController{
+export class CreandoEventosDeRRHHController{
 
 
     constructor(private readonly eventService : EventMySqlService){}

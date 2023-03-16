@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post,Get } from '@nestjs/common';
 import { BuscarContratoPublisher } from '../messaging';
 import { ContratoService } from '../persistence';
 import { NegociarContratoPublisher } from '../messaging/publishers/secretaria/contrato/negociar-contrato-publisher';
@@ -26,7 +26,7 @@ export class ContratoController {
         return await useCase.execute(command);
     }
 
-    @Post('/buscar')
+    @Get('/buscar')
     async buscarContrato(@Body() command: BuscarContratoCommand ) {
         const useCase = new BuscarContatoUseCase (
             this.contratoService,
