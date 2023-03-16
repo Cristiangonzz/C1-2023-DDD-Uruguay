@@ -25,8 +25,8 @@ export class TramiteController {
         return await useCase.execute(command);
     }
 
-    @Get('/buscar/:id')
-    async buscarTramite(@Param('id') id: BuscarTramiteCommand) {
+    @Get('/buscar')
+    async buscarTramite(@Body() id: BuscarTramiteCommand) {
         const useCase = new BuscarTramiteUseCase(
             this.tramiteService,
             this.tramitebuscadoEventPublisher,

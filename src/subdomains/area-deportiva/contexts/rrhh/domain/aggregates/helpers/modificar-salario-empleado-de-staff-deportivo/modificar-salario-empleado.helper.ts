@@ -11,9 +11,9 @@ export const  ModificarSalarioEmpleadoHelper = async (
 ):Promise<EmpleadoDomainEntity> => { 
     
     if(!service)
-    throw new AggregateRootException('Servicio Staff Deportivo indefinido')
+    throw new AggregateRootException('Servicio Empleado indefinido')
 
-    if(!event) throw new AggregateRootException('Evento creador de Staff Deportivo indefinido');
+    if(!event) throw new AggregateRootException('Evento modificar Salario indefinido');
 
     const result = await service.modificarSalario(empleadoId,entity);
     event.response = result;

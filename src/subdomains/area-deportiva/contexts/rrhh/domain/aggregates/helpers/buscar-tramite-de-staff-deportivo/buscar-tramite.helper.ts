@@ -10,9 +10,9 @@ export const BuscarTramiteHelper = async (
 ):Promise<TramiteDomainEntity> => { 
     
     if(!service)
-    throw new AggregateRootException('Servicio Staff Deportivo indefinido')
+    throw new AggregateRootException('Servicio Tramite indefinido')
 
-    if(!event) throw new AggregateRootException('Evento buscar tramite indefinido');
+    if(!event) throw new AggregateRootException('Evento buscarTramite indefinido');
 
     const result = await service.BuscarTramite(tramiteId);
     event.response = result;

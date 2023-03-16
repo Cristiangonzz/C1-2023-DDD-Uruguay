@@ -11,7 +11,6 @@ import { TramiteBuscadoEventPublisher } from '../../../domain/events/publishers/
 import { EmpleadoBuscadoEventPublisher } from '../../../domain/events/publishers/staff-deporitvo/empleado-buscado.event-publisher';
 import { BuscarTramiteUseCase } from './buscar-tramite.use-case';
 import { BuscarEmpleadoUseCase } from './buscar-empleado.use-case';
-import { IdValueObject } from '../../../domain/value-objects';
 import { ICrearStaffDeportivoCommands } from '../../../domain/interfaces/commands/staff-deportivo';
 import { IEmpleadoDomainService, ITramiteDomainService } from '../../../domain/services';
 
@@ -52,16 +51,16 @@ export class CrearStaffDeportivoUseCase
             'Errores en el comando "ICrearStaffDeportivoCommand"',
             this.getErrors(),
             );
-            
+         //Intancio el caso de uso   
         const obtenerTramite = new BuscarTramiteUseCase(this.tramiteService,this.tramiteBuscadoEvent);
-        const obtnerEmpleado = new BuscarEmpleadoUseCase(this.empleadoService,this.empleadoBuscadoEvent);
+        const obtenerEmpleado = new BuscarEmpleadoUseCase(this.empleadoService,this.empleadoBuscadoEvent);
        
         // Ejecución de la lógica del caso de uso
         const entity = new StaffDeportivoDomainEntity({
            
             nombre: nombre.valueOf(),
             tramite: (await obtenerTramite.execute({tramiteId: command.tamite})).data ,
-            empleado: (await obtnerEmpleado.execute({empleadoId : command.empleado})).data,
+            empleado: (await obtenerEmpleado.execute({empleadoId : command.empleado})).data,
             
         });
         const result = await this.aggregateRoot.CrearStaffDeportivo(entity);//Se le puede pasar directamente la entidad como tambien se le pude pasar la interface 

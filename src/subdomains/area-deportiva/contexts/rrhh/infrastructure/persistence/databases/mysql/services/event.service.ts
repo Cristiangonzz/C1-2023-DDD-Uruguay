@@ -10,14 +10,8 @@ export class EventMySqlService
   constructor(private readonly eventRepository: EventRepository) {}
 
 
-  NegociarCesion(event: EventMySqlEntity): Promise<EventMySqlEntity> {
+  crearEvento(event: EventMySqlEntity): Promise<EventMySqlEntity> {
     return this.eventRepository.create(event);
   }
-
-
-
- 
-
-
 
 }

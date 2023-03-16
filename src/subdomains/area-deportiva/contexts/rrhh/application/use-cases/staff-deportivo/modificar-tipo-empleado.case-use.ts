@@ -16,7 +16,6 @@ export class ModificarTipoEmpleadoUseCase
         constructor(
             private readonly empleadoService: IEmpleadoDomainService,
             private readonly tipoEmpleadoModificadoEvent : TipoEmpleadoModificadoEventPublisher,
-
         ){
             super();
             this.aggregateRoot = new StaffDeportivoAggregate({empleadoService,tipoEmpleadoModificadoEvent});
@@ -95,7 +94,7 @@ export class ModificarTipoEmpleadoUseCase
 
         return new EmpleadoDomainEntity({
             empleadoId : empleadoId.valueOf(),
-            nombre: tipoEmpleado.valueOf(),
+            tipoEmpleado: tipoEmpleado.valueOf(),
         })
     }
 

@@ -7,6 +7,7 @@ import { IModificarSalarioEmpleadoCommands } from "../../../domain/interfaces/co
 import { ISalarioEmpleadoModificadoResponse } from "../../../domain/interfaces/responses/staff-deportivo";
 import { IdValueObject, CostoValueObject } from "../../../domain/value-objects";
 import { IEmpleadoDomainService } from '../../../domain/services/staff-Deportivo/empleado.domain-service';
+import { SalarioEmpleadoModificadoEventPublisher } from '../../../domain/events/publishers/staff-deporitvo/salario-empleado-modificado.event-publisher';
 
 export class ModificarSalarioEmpleadoUseCase 
     extends ValueObjectErrorHandler
@@ -16,10 +17,10 @@ export class ModificarSalarioEmpleadoUseCase
 
         constructor(
             private readonly empleadoService: IEmpleadoDomainService,
-            private readonly tipoEmpleadoModificadoEvent : TipoEmpleadoModificadoEventPublisher,
+            private readonly salarioEmpleadoModificadoEvent : SalarioEmpleadoModificadoEventPublisher,
         ){
             super();
-            this.aggregateRoot = new StaffDeportivoAggregate({empleadoService,tipoEmpleadoModificadoEvent});
+            this.aggregateRoot = new StaffDeportivoAggregate({empleadoService,salarioEmpleadoModificadoEvent});
         }
    
 
@@ -36,10 +37,10 @@ export class ModificarSalarioEmpleadoUseCase
         const ValueObject = this.createValueObject(command);
 
         //Llama para validar los value object 
-        this.validateValueObject(ValueObject);
+        //this.validateValueObject(ValueObject);
 
         //Llama a la funcion para crear la entidad que se necesita pasandole los value object 
-        const entity = this.createEntityClientDomain(ValueObject);
+        const entity = this.modificarSalarioempleadoDomain(ValueObject);
 
         //Llama a la funcion que se conecta con el servicio del agregado 
         return this.exectueOrderAggregateRoot(entity)
@@ -70,13 +71,13 @@ export class ModificarSalarioEmpleadoUseCase
 
         if (this.hasErrors() === true)
             throw new ValueObjectException(
-                'Hay algunos errores en el comando ejecutado por AddClientUseCase',
+                'Hay algunos errores en el comando ejecutado modificar salario',
                 this.getErrors(),
             );
     }
 
     //Crea la entidad en si
-    private createEntityClientDomain(
+    private modificarSalarioempleadoDomain(
         valueObject: IEmpleadoDomainEntity
     ): EmpleadoDomainEntity {
 

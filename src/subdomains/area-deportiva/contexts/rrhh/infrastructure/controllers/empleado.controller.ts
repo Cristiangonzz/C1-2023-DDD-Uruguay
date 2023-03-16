@@ -66,7 +66,7 @@ export class EmpleadoController {
         return await useCase.execute(command);
     }
 
-    @Put('/modificar-salario')
+    @Post('/modificar-salario')
     async modificarSalarioEmpleado(@Body() command: ModificarSalarioEmpleadoCommand) {
         const useCase = new ModificarSalarioEmpleadoUseCase(
             this.empleadoService,
@@ -75,10 +75,8 @@ export class EmpleadoController {
         return await useCase.execute(command);
     }
 
-
-
-    @Get('/buscar/:id')
-    async buscarEmpleado(@Param('id') command: BuscarEmpleadoCommand) {
+    @Get('/buscar')
+    async buscarEmpleado(@Body() command: BuscarEmpleadoCommand) {
         const useCase = new BuscarEmpleadoUseCase(
             this.empleadoService,
             this.empleadoBuscadoEven,

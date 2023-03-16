@@ -71,7 +71,7 @@ export class ModificarNombreEmpleadoUseCase
 
         if (this.hasErrors() === true)
             throw new ValueObjectException(
-                'Hay algunos errores en el comando ejecutado por AddClientUseCase',
+                'Hay algunos errores en el comando ejecutado por modificar nombre ',
                 this.getErrors(),
             );
 

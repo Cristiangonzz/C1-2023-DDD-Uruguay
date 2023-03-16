@@ -46,7 +46,7 @@ export class StaffDeportivoAggregate implements IStaffDeportivoDomainService  , 
 
     //empleado
     private readonly empleadoAgregadoEvent?: EmpleadoAgregadoEventPublisher;
-    private readonly salarioEmpleadoModificadoEvent?: SalarioEmpleadoModificadoEventPublisher;
+ 
     private readonly empleadoBuscadoEvent?: EmpleadoBuscadoEventPublisher;
     private readonly nombremodificadoEvent?: NombreModificadoEventPublisher;
     private readonly documentoModificadoEvent?: DocumentoModificadoEventPublisher;
@@ -136,7 +136,7 @@ export class StaffDeportivoAggregate implements IStaffDeportivoDomainService  , 
        this.staffDeportivoCreadoEvent = staffDeportivoCreadoEvent;
         //empleado
         this.empleadoAgregadoEvent = empleadoAgregadoEvent;
-        this.salarioEmpleadoModificadoEvent = salarioEmpleadoModificadoEvent;
+        this.salarioModificadoEvent = salarioEmpleadoModificadoEvent;
         this.empleadoBuscadoEvent = empleadoBuscadoEvent;
         this.nombremodificadoEvent = nombreModificadoEvent;
         this.documentoModificadoEvent = documentoModificadoEvent;
@@ -144,7 +144,7 @@ export class StaffDeportivoAggregate implements IStaffDeportivoDomainService  , 
         //tramite
         this.tamiteAgregadoEvent = tamiteAgregadoEvent;
         this.fechaTamiteModificadoEvent = fechaTamiteModificadoEvent;
-        this.empleadoBuscadoEvent = empleadoBuscadoEvent;
+        this.tramiteBuscadoEvent = tramiteBuscadoEvent;
 
         //negociacion
         this.negociacionEquipoNuevoModificadoEvent = negociacionEquipoNuevoModificadoEvent;

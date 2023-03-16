@@ -22,14 +22,14 @@ export class BuscarTramiteUseCase extends ValueObjectErrorHandler
 
     //Ejecutar el comando , usando otra funcion para crear lo que necesita el comando 
     async execute(command?: IBuscarTramiteCommands): Promise<ItramiteBuscadoResponse> {
-        const data = await this.exectueOrderAggregateRoot(command.tramiteId);
+        const data = await this.exectueTramiteAggregateRoot(command.tramiteId);
 
         return { success: data ? true : false, data }
     }
 
 
     //Manda a llamar al al servicio y asi usar sus metodos 
-    private exectueOrderAggregateRoot(
+    private exectueTramiteAggregateRoot(
         tramiteId:string,
     ): Promise<TramiteDomainEntity | null> {
         return this.aggregateRoot.BuscarTramite(tramiteId)

@@ -27,9 +27,9 @@ async execute(command?: IBuscarEmpleadoCommands): Promise<IEmpleadoBuscadoRespon
 }
 
 
-//Manda a llamar al al servicio y asi usar sus metodos 
-private exectueStaffDeporivoAggregateRoot(emleadoid: string): Promise<EmpleadoDomainEntity | null> {
-    return this.aggregateRoot.BuscarEmpleado(emleadoid)
-}
+    //Manda a llamar al al servicio y asi usar sus metodos 
+    private exectueStaffDeporivoAggregateRoot(empleadoid: string): Promise<EmpleadoDomainEntity | null> {
+        return this.aggregateRoot.BuscarEmpleado(empleadoid)
+    }
 }
 
