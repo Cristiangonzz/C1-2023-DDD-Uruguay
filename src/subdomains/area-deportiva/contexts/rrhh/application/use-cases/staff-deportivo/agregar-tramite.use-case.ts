@@ -124,7 +124,7 @@ export class AgregarTramiteUseCase extends ValueObjectErrorHandler
             fecha,
             negociacion
         } = valueObject
-
+//Tendria que traer el caso de uso de negociacion 
         return new TramiteDomainEntity({
             fecha: fecha.valueOf(),
             negociacion : new NegociacionDomainEntity({

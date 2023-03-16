@@ -1,7 +1,5 @@
-
 import { AggregateRootException } from 'src/libs';
 import { CesionDomainEntity } from '../../../entities/cesion/cesion.domain-entity';
-
 import { ICesionDomainService } from '../../../services/secretaria/cesion.domain-service';
 import { CesionNegociadoEventPublisher } from '../../../events/publishers';
 
@@ -11,7 +9,7 @@ export const CrearCesionHelper = async (
     event?: CesionNegociadoEventPublisher,
 ):Promise<CesionDomainEntity> => { 
     if(!service)
-    throw new AggregateRootException('Servicio Secretaria indefinido')
+    throw new AggregateRootException('Servicio Cesion indefinido')
 
     if(!event) throw new AggregateRootException('Evento negociar cesion indefinido');
 

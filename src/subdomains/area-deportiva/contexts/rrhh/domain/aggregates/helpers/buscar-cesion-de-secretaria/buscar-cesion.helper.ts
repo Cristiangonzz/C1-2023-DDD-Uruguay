@@ -1,5 +1,4 @@
 import { CesionDomainEntity } from '../../../entities/cesion/cesion.domain-entity';
-import { ISecretariaDomainService } from '../../../services/secretaria/secretaria.domain-service';
 import { CesionBuscadaEventPublisher } from '../../../events/publishers/secretaria/cesion-buscada.event-publisher';
 import { AggregateRootException } from 'src/libs';
 import { ICesionDomainService } from '../../../services/secretaria/cesion.domain-service';
@@ -10,7 +9,7 @@ export const BuscarCesionHelper = async (
     event?: CesionBuscadaEventPublisher,
 ):Promise<CesionDomainEntity> => { 
     if(!service)
-    throw new AggregateRootException('Servicio Secretaria indefinido')
+    throw new AggregateRootException('Servicio Cesion indefinido')
 
     if(!event) throw new AggregateRootException('Evento buscar cesion indefinido');
 

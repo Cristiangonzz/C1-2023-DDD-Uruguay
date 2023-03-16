@@ -17,6 +17,8 @@ import { BuscarContratoPublisher } from './publishers/secretaria/contrato/buscar
 import { BuscarTramitePublisher } from './publishers/staffDeportivo/tramite/buscar-tramite.publisher';
 import { NegociarContratoPublisher } from './publishers/secretaria/contrato/negociar-contrato-publisher';
 import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretaria.publisher';
+import { CreandoEventosDeRRHHController } from './subscribers';
+import { MySqlModule } from '../persistence';
 
 /**
  * name: el nombre del cliente.
@@ -40,6 +42,7 @@ import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretar
  */
 @Module({
     imports: [
+        MySqlModule,
         ClientsModule.register([
             {
                 name: 'RRHH_CONTEXT',
@@ -54,7 +57,7 @@ import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretar
         ]),
     ],
     controllers: [
-       
+        CreandoEventosDeRRHHController,
     ],
     providers: [
        
@@ -83,21 +86,22 @@ import { CrearSecretariaPublisher } from './publishers/secretaria/crear-secretar
     ],
     exports: [
         CrearSecretariaPublisher,
+        CrearStaffDeportivoPublisher,
+        AgregarEmpleadoPublisher,
+        CrearTramitePublisher,
         CrearNegociacionPublisher,
+        NegociarContratoPublisher,
         NegociarCesiontPublisher,
         NegociarTraspasoPublisher,
-        NegociarContratoPublisher,
-        
-        CrearTramitePublisher,
-        CrearStaffDeportivoPublisher,
-        
 
-        AgregarEmpleadoPublisher,
+
         BuscarEmpleadoPublisher,
         BuscarTramitePublisher,
         BuscarCesiontPublisher,
         BuscarTraspasoPublisher,
         BuscarContratoPublisher,
+
+
         ModificarTipoEmpleadoPublisher,
         ModificarSalarioEmpleadoPublisher,
         ModificarNombreEmpleadoPublisher,

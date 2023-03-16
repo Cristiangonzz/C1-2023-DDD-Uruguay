@@ -9,7 +9,7 @@ export const CrearContratoHelper = async (
     event?: ContratoNegociadoEventPublisher,
 ):Promise<ContratoDomainEntity> => { 
     if(!service)
-    throw new AggregateRootException('Servicio Secretaria indefinido')
+    throw new AggregateRootException('Servicio Contrato indefinido')
 
     if(!event) throw new AggregateRootException('Evento negociar contrato indefinido');
 

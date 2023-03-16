@@ -11,9 +11,9 @@ export const  ModificarDocumentoEmpleadoHelper = async (
 ):Promise<EmpleadoDomainEntity> => { 
     
     if(!service)
-    throw new AggregateRootException('Servicio Staff Deportivo indefinido')
+    throw new AggregateRootException('Servicio Empleado indefinido')
 
-    if(!event) throw new AggregateRootException('Evento creador de Staff Deportivo indefinido');
+    if(!event) throw new AggregateRootException('Evento Modificar documento Empleado indefinido');
 
     const result = await service.modificarDocumento(empleadoId,entity);
     event.response = result;

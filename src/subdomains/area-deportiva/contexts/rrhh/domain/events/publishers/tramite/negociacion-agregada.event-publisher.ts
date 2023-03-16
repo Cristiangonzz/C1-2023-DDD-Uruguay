@@ -2,7 +2,7 @@ import { EventPublisherBase } from "src/libs";
 import { TramiteDomainEntity } from "../../../entities/tramite/tramite.entity.interface";
 
 export abstract class NegociacionAgregadaEventPublisher 
-<Response = TramiteDomainEntity>
+<Response = TramiteDomainEntity | null>
     extends EventPublisherBase<Response>{
         
     publish<Result = any>(): Promise<Result> {

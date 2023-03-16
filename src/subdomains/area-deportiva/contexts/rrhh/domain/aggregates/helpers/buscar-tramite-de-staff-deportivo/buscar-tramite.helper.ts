@@ -12,7 +12,7 @@ export const BuscarTramiteHelper = async (
     if(!service)
     throw new AggregateRootException('Servicio Tramite indefinido')
 
-    if(!event) throw new AggregateRootException('Evento buscarTramite indefinido');
+    if(!event) throw new AggregateRootException('Evento buscar Tramite indefinido');
 
     const result = await service.BuscarTramite(tramiteId);
     event.response = result;

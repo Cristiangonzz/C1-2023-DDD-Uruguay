@@ -1,8 +1,7 @@
 import { EventPublisherBase } from "src/libs";
 import { TraspasoDomainEntity } from '../../../entities/traspaso/traspaso.domain-entity';
 
-export abstract class StateTraspasoModificadoEventPublisher
- <Response = TraspasoDomainEntity>
+export abstract class StateTraspasoModificadoEventPublisher<Response = TraspasoDomainEntity | null>
     extends EventPublisherBase<Response>{
         
     publish<Result = any>(): Promise<Result> {

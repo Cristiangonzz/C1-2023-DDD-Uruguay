@@ -1,5 +1,3 @@
-
-import { ISecretariaDomainService } from '../../../services/secretaria/secretaria.domain-service';
 import { AggregateRootException } from 'src/libs';
 import { TraspasoDomainEntity } from '../../../entities';
 import { TraspasoBuscadaEventPublisher } from '../../../events/publishers/secretaria/traspaso-buscado.event-publisher';
@@ -11,7 +9,7 @@ export const BuscarTraspasoHelper = async (
     event?: TraspasoBuscadaEventPublisher,
 ):Promise<TraspasoDomainEntity> => { 
     if(!service)
-    throw new AggregateRootException('Servicio Secretaria indefinido')
+    throw new AggregateRootException('Servicio Traspaso indefinido')
 
     if(!event) throw new AggregateRootException('Evento buscar traspaso indefinido');
 

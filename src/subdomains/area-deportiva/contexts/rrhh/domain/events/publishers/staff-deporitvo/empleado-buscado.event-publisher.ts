@@ -1,7 +1,7 @@
 import { EventPublisherBase } from 'src/libs';
 import { EmpleadoDomainEntity } from '../../../entities/empleado/EmpleadoDomainEntity';
 
-export class EmpleadoBuscadoEventPublisher<Response = EmpleadoDomainEntity>
+export class EmpleadoBuscadoEventPublisher<Response = EmpleadoDomainEntity | null>
 extends EventPublisherBase<Response>{
 
 

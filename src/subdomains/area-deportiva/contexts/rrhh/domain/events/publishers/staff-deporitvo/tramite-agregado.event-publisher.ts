@@ -1,7 +1,7 @@
 import { EventPublisherBase } from 'src/libs';
 import { TramiteDomainEntity } from '../../../entities/tramite/tramite.entity.interface';
 
-export abstract class TramiteAgregadoEventPublisher<Response = TramiteDomainEntity>
+export abstract class TramiteAgregadoEventPublisher<Response = TramiteDomainEntity | null>
 extends EventPublisherBase<Response>{
 
 

@@ -13,7 +13,6 @@ import { SecretariaController } from './controllers/secretaria.controller';
 @Module({
     imports: [PersistenceModule,MessagingModule],
     controllers: [
-//CreandoEventosDeRRHHController
       EmpleadoController,
       TramiteController,
       ContratoController,
@@ -22,10 +21,7 @@ import { SecretariaController } from './controllers/secretaria.controller';
       StaffDeportivoController,
       SecretariaController,
       ],
-    providers: [
-    ],
-    exports: [
-     
-    ],
+    providers: [],
+    exports: [],
   })
 export class ConsultoryModule{}

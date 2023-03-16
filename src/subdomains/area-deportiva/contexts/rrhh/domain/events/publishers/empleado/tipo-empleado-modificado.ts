@@ -2,7 +2,7 @@ import { EventPublisherBase } from "src/libs";
 import { EmpleadoDomainEntity } from "../../../entities/empleado/EmpleadoDomainEntity";
 
 export abstract class TipoEmpleadoModificadoEventPublisher
-<Response = EmpleadoDomainEntity>
+<Response = EmpleadoDomainEntity | null>
     extends EventPublisherBase<Response>{
         
     publish<Result = any>(): Promise<Result> {

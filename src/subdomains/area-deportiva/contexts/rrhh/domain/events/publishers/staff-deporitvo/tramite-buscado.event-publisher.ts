@@ -1,7 +1,7 @@
 import { EventPublisherBase } from "src/libs";
 import { TramiteDomainEntity } from "../../../entities";
 
-export class TramiteBuscadoEventPublisher<Response = TramiteDomainEntity>
+export class TramiteBuscadoEventPublisher<Response = TramiteDomainEntity | null>
 extends EventPublisherBase<Response>{
 
 
