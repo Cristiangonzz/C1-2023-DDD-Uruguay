@@ -1,5 +1,4 @@
-
-import { EventPublisherBase } from "../../../../../../../libs/sofka/bases/event-publisher.base";
+import { v4 as uuidv4 } from 'uuid';
 import { EmpleadoAgregadoEventPublisher, EmpleadoBuscadoEventPublisher, NombreModificadoEventPublisher, DocumentoModificadoEventPublisher, TipoEmpleadoModificadoEventPublisher, SalarioModificadoEventPublisher, StaffDeportivoCreadoEventPublisher, FechaTramiteModificadaEventPublisher, StateModificadoEventPublisher, TramiteAgregadoEventPublisher, TramiteBuscadoEventPublisher } from "../../events/publishers";
 import { IEmpleadoDomainService } from "../../services/staff-Deportivo/empleado.domain-service";
 import { INegociacionDomainService } from "../../services/staff-Deportivo/negociacion.domain-service";
@@ -8,8 +7,22 @@ import { ITramiteDomainService } from "../../services/staff-Deportivo/tramite.do
 import { StaffDeportivoAggregate } from "./staff-deportivo.aggregate";
 import { EquipoNuevoNegociacionModificadoEventPublisher, EquipoSalidaNegociacionModificadoEventPublisher, TipoDeNegociacionModificadoEventPublisher } from "../../events/publishers/negociacion";
 import { EmpleadoDomainEntity } from "../../entities/empleado/EmpleadoDomainEntity";
+import { TramiteDomainEntity } from '../../entities/tramite/tramite.entity.interface';
+
+import * as crearTramite from '../helpers/crear-tramite-de-staff-deportivo/crear-tramite.helper';
+import * as crearContrato from '../helpers/crear-contrato-de-secretaria/crear-contrato.helper';
+import * as crearTraspaso from '../helpers/crear-traspaso-de-secretaria/crear-traspaso.helper';
+import * as crearCesion from '../helpers/crear-cesion-de-secretaria/crear-cesion.helper';
+import * as crearSecretaria from '../helpers/crear-secretaria-de-secretaria/crear-secretaria.helper';
+import * as crearStaffDeportivo from '../helpers/crear-staff-deportivo-de-staff-deportivo/crear-staff-deportivo.helper';
 
 import * as crearEmpleado from '../helpers/crear-empleado-de-staff-deportivo/crear-empleado.helper';
+import * as buscarEmpleado from '../helpers/buscar-empleado-de-staff-deportivo/buscar-empleado.helper';
+import * as modificarNombre from '../helpers/modificar-nombre-empleado-de-staff-deportivo/modificar-nombre-empleado.helper';
+import * as modificarDocumento from '../helpers/modificar-documento-empleado-de-staff-deportivo/modificar-documento-empleado.helper';
+import * as modificarSalario from '../helpers/modificar-salario-empleado-de-staff-deportivo/modificar-salario-empleado.helper';
+import * as modificarTipo from '../helpers/modificar-tipo-empleado-de-staff-deportivo/modificar-tipo-empleado.helper';
+
 
 
 describe('StaffDeportivoAggregate', () => {
@@ -23,10 +36,10 @@ describe('StaffDeportivoAggregate', () => {
 
   let empleadoAgregadoEvent: EmpleadoAgregadoEventPublisher;
   let empleadoBuscadoEvent: EmpleadoBuscadoEventPublisher;
-  let nombremodificadoEvent: NombreModificadoEventPublisher;
+  let nombreModificadoEvent: NombreModificadoEventPublisher;
   let documentoModificadoEvent: DocumentoModificadoEventPublisher;
   let tipoEmpleadoModificadoEvent: TipoEmpleadoModificadoEventPublisher;
-  let salarioModificadoEvent: SalarioModificadoEventPublisher;
+  let salarioEmpleadoModificadoEvent: SalarioModificadoEventPublisher;
 //tramite
   let tamiteAgregadoEvent: TramiteAgregadoEventPublisher;
   let fechaTamiteModificadoEvent: FechaTramiteModificadaEventPublisher;
@@ -49,10 +62,10 @@ describe('StaffDeportivoAggregate', () => {
 
     empleadoAgregadoEvent = {} as  EmpleadoAgregadoEventPublisher;
     empleadoBuscadoEvent = {} as  EmpleadoBuscadoEventPublisher;
-    nombremodificadoEvent = {} as  NombreModificadoEventPublisher;
+    nombreModificadoEvent = {} as  NombreModificadoEventPublisher;
     documentoModificadoEvent = {} as  DocumentoModificadoEventPublisher;
     tipoEmpleadoModificadoEvent = {} as  TipoEmpleadoModificadoEventPublisher;
-    salarioModificadoEvent = {} as  SalarioModificadoEventPublisher;
+    salarioEmpleadoModificadoEvent = {} as  SalarioModificadoEventPublisher;
 
     tamiteAgregadoEvent = {} as TramiteAgregadoEventPublisher;
     fechaTamiteModificadoEvent = {} as FechaTramiteModificadaEventPublisher;
@@ -74,20 +87,15 @@ describe('StaffDeportivoAggregate', () => {
         tramiteService,
         staffDeportivoCreadoEvent,
         empleadoAgregadoEvent,
-        empleadoBuscadoEvent,
         
+        empleadoBuscadoEvent,
+        salarioEmpleadoModificadoEvent,
+        nombreModificadoEvent,
         documentoModificadoEvent,
         tipoEmpleadoModificadoEvent,
-     
-
-        tamiteAgregadoEvent, 
-        fechaTamiteModificadoEvent, 
+    
+        tamiteAgregadoEvent,  
         tramiteBuscadoEvent ,
-
-        negociacionEquipoNuevoModificadoEvent ,
-        negociacionEquipoSalidaModificadoEvent ,
-        negociacionStateModificadoEvent ,
-        negociacionTipoNegociacionModificadoEvent
     });
   });
 
@@ -141,47 +149,301 @@ describe('StaffDeportivoAggregate', () => {
   });
 
 
-describe('CrearTramite', () => {
-    it('execute CrearEmpleadoHelper with params', () => {
+
+  describe('modificarNombre', () => {
+    it('execute ModificarNombreEmpleadoHelper with params', () => {
       // Arrange
-        const entity = new EmpleadoDomainEntity();
-        const expected = new EmpleadoDomainEntity();
-        entity.empleadoId = "145"
-        entity.nombre = "Alvaro Correa",
-        entity.documento = "12345678",
-        entity.tipoEmpleado = "Negociador",
-        entity.nacionalidad = "Uruguay",
-        entity.edad = 65,
-        entity.salario = 130000
+      const empleadoId = uuidv4();
+      const entity = new EmpleadoDomainEntity();
+      
+      jest
+        .spyOn(modificarNombre, 'ModificarNombreEmpleadoHelper')
+        .mockResolvedValue(entity);
+
+      // Act
+      aggregate = new StaffDeportivoAggregate({
+          empleadoService,
+          nombreModificadoEvent,
+      });
+      const result = aggregate.modificarNombre(
+        empleadoId,
+        entity,
+      );
+
+      // Assert
+      expect(result).resolves.toEqual(entity);
+      expect(
+        modificarNombre.ModificarNombreEmpleadoHelper,
+      ).toHaveBeenCalledWith(
+        empleadoId,
+        entity,
+        empleadoService,
+        nombreModificadoEvent,
+      );
+    });
+  });
+
+  describe('modificarSalario', () => {
+    it('execute ModificarSalarioEmpleadoHelper with params', () => {
+      // Arrange
+      const empleadoId = uuidv4();
+      const entity = new EmpleadoDomainEntity();
+      
+      jest
+        .spyOn(modificarSalario, 'ModificarSalarioEmpleadoHelper')
+        .mockResolvedValue(entity);
+
+      // Act
+      aggregate = new StaffDeportivoAggregate({
+          empleadoService,
+          salarioEmpleadoModificadoEvent,
+      });
+      const result = aggregate.modificarSalario(
+        empleadoId,
+        entity,
+      );
+
+      // Assert
+      expect(result).resolves.toEqual(entity);
+      expect(
+        modificarSalario.ModificarSalarioEmpleadoHelper,
+      ).toHaveBeenCalledWith(
+        empleadoId,
+        entity,
+        empleadoService,
+        salarioEmpleadoModificadoEvent,
+      );
+    });
+  });
+
+  describe('modificarDocumento', () => {
+    it('execute ModificarDocumentoEmpleadoHelper with params', () => {
+      // Arrange
+      const empleadoId = uuidv4();
+      const entity = new EmpleadoDomainEntity();
+      
+      jest
+        .spyOn(modificarDocumento, 'ModificarDocumentoEmpleadoHelper')
+        .mockResolvedValue(entity);
+
+      // Act
+      aggregate = new StaffDeportivoAggregate({
+          empleadoService,
+          documentoModificadoEvent,
+      });
+      const result = aggregate.modificarDocumento(
+        empleadoId,
+        entity,
+      );
+
+      // Assert
+      expect(result).resolves.toEqual(entity);
+      expect(
+        modificarDocumento.ModificarDocumentoEmpleadoHelper,
+      ).toHaveBeenCalledWith(
+        empleadoId,
+        entity,
+        empleadoService,
+        documentoModificadoEvent,
+      );
+    });
+  });
+
+  describe('modificarDocumento', () => {
+    it('execute ModificarTipoEmpleadoHelper with params', () => {
+      // Arrange
+      const empleadoId = uuidv4();
+      const entity = new EmpleadoDomainEntity();
+      
+      jest
+        .spyOn(modificarDocumento, 'ModificarTipoEmpleadoHelper')
+        .mockResolvedValue(entity);
+
+      // Act
+      aggregate = new StaffDeportivoAggregate({
+          empleadoService,
+          documentoModificadoEvent,
+      });
+      const result = aggregate.modificarDocumento(
+        empleadoId,
+        entity,
+      );
+
+      // Assert
+      expect(result).resolves.toEqual(entity);
+      expect(
+        modificarDocumento.ModificarTipoEmpleadoHelper,
+      ).toHaveBeenCalledWith(
+        empleadoId,
+        entity,
+        empleadoService,
+        documentoModificadoEvent,
+      );
+    });
+  });
+
+  
+// describe('modificarTipoEmpleado', () => {
+//     it('execute CrearTramiteHelper with params', () => {
+//       // Arrange
+//         const entity = new TramiteDomainEntity();
+//         const expected = new TramiteDomainEntity();
+       
+//         entity.tramiteId = "145"
+//         entity.negociacion = {
+//             negociacionId :  "11114",
+//             equipoSalidaId :  "11113",
+//             equipoNuevoId :  "11112",
+//             tipoNegociacion :  "Contrato",
+//             terminoACumplir :  "Cumplir con el club las responsabilidades",
+//             state :  true,
+
+//         },
+//         entity.fecha = "12345678",
+       
+        
+        
+//         expected.tramiteId = "145"
+//         expected.negociacion = {
+//             negociacionId :  "11114",
+//             equipoSalidaId :  "11113",
+//             equipoNuevoId :  "11112",
+//             tipoNegociacion :  "Contrato",
+//             terminoACumplir :  "Cumplir con el club las responsabilidades",
+//             state :  true,
+
+//         },
+//         expected.fecha = "12345678",
+
+     
+//         jest
+//          .spyOn(crearTramite, 'CrearTramiteHelper')
+//          .mockResolvedValue(entity);
+
+//       // Act
+//       aggregate = new StaffDeportivoAggregate({
+//         tramiteService,
+//         tamiteAgregadoEvent,
+//       });
+//       const result = aggregate.CrearTramite(entity);
+
+//       // Assert
+//       expect(result).resolves.toEqual(expected);
+//       expect(crearTramite.CrearTramiteHelper).toHaveBeenCalledWith(
+//         entity,
+//         tramiteService,
+//         tamiteAgregadoEvent,
+//       );
+//     });
+//   });
 
 
-    
-        expected.empleadoId = "145"
-        expected.nombre = "Alvaro Correa",
-        expected.documento = "12345678",
-        expected.tipoEmpleado = "Negociador",
-        expected.nacionalidad = "Uruguay",
-        expected.edad = 65,
-        expected.salario = 130000
+  
+// describe('CrearStaffDeportivo', () => {
+//     it('execute CrearTramiteHelper with params', () => {
+//       // Arrange
+//         const entity = new TramiteDomainEntity();
+//         const expected = new TramiteDomainEntity();
+       
+//         entity.tramiteId = "145"
+//         entity.negociacion = {
+//             negociacionId :  "11114",
+//             equipoSalidaId :  "11113",
+//             equipoNuevoId :  "11112",
+//             tipoNegociacion :  "Contrato",
+//             terminoACumplir :  "Cumplir con el club las responsabilidades",
+//             state :  true,
+
+//         },
+//         entity.fecha = "12345678",
+       
+        
+        
+//         expected.tramiteId = "145"
+//         expected.negociacion = {
+//             negociacionId :  "11114",
+//             equipoSalidaId :  "11113",
+//             equipoNuevoId :  "11112",
+//             tipoNegociacion :  "Contrato",
+//             terminoACumplir :  "Cumplir con el club las responsabilidades",
+//             state :  true,
+
+//         },
+//         expected.fecha = "12345678",
+
+     
+//         jest
+//          .spyOn(crearTramite, 'CrearTramiteHelper')
+//          .mockResolvedValue(entity);
+
+//       // Act
+//       aggregate = new StaffDeportivoAggregate({
+//         tramiteService,
+//         tamiteAgregadoEvent,
+//       });
+//       const result = aggregate.CrearTramite(entity);
+
+//       // Assert
+//       expect(result).resolves.toEqual(expected);
+//       expect(crearTramite.CrearTramiteHelper).toHaveBeenCalledWith(
+//         entity,
+//         tramiteService,
+//         tamiteAgregadoEvent,
+//       );
+//     });
+//   });
+
+  
+describe('CrearTramite', () => {
+    it('execute CrearTramiteHelper with params', () => {
+      // Arrange
+        const entity = new TramiteDomainEntity();
+        const expected = new TramiteDomainEntity();
+       
+        entity.tramiteId = "145"
+        entity.negociacion = {
+            negociacionId :  "11114",
+            equipoSalidaId :  "11113",
+            equipoNuevoId :  "11112",
+            tipoNegociacion :  "Contrato",
+            terminoACumplir :  "Cumplir con el club las responsabilidades",
+            state :  true,
+
+        },
+        entity.fecha = "12345678",
+       
+        
+        
+        expected.tramiteId = "145"
+        expected.negociacion = {
+            negociacionId :  "11114",
+            equipoSalidaId :  "11113",
+            equipoNuevoId :  "11112",
+            tipoNegociacion :  "Contrato",
+            terminoACumplir :  "Cumplir con el club las responsabilidades",
+            state :  true,
+
+        },
+        expected.fecha = "12345678",
 
      
         jest
-         .spyOn(crearEmpleado, 'CrearEmpleadoHelper')
+         .spyOn(crearTramite, 'CrearTramiteHelper')
          .mockResolvedValue(entity);
 
       // Act
       aggregate = new StaffDeportivoAggregate({
-        empleadoService,
-        empleadoAgregadoEvent,
+        tramiteService,
+        tamiteAgregadoEvent,
       });
       const result = aggregate.CrearTramite(entity);
 
       // Assert
       expect(result).resolves.toEqual(expected);
-      expect(crearEmpleado.CrearEmpleadoHelper).toHaveBeenCalledWith(
+      expect(crearTramite.CrearTramiteHelper).toHaveBeenCalledWith(
         entity,
-        empleadoService,
-        empleadoAgregadoEvent,
+        tramiteService,
+        tamiteAgregadoEvent,
       );
     });
   });
