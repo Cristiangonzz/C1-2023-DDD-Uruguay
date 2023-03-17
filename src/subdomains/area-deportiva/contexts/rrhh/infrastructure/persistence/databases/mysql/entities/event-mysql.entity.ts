@@ -10,7 +10,7 @@ export class EventMySqlEntity   {
   @Column()
   type: string;
 
-  @Column()
+  @Column( { length : 10000 })
   data: string;
 
   @Column()

@@ -6,7 +6,9 @@ import { CrearContratoUseCase } from '../../application/use-cases/secretaria/cre
 import { BuscarContatoUseCase } from '../../application';
 import { BuscarContratoCommand } from '../utils/commands/secretaria/contrato/buscar-contrato.commands';
 import { NegociarContratoCommand } from '../utils/commands/secretaria/contrato/negociar-contrato-commands';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('contrato')
 @Controller('contrato')
 export class ContratoController {
     constructor(
@@ -17,6 +19,7 @@ export class ContratoController {
         private readonly contratoNegociadoEventPublisher: NegociarContratoPublisher,
     ) {}
 
+    @ApiOperation({summary: "crear contrato"})
     @Post('/crear')
     async crearContrato(@Body() command: NegociarContratoCommand) {
         const useCase = new CrearContratoUseCase(
@@ -25,7 +28,7 @@ export class ContratoController {
         );
         return await useCase.execute(command);
     }
-
+    @ApiOperation({summary: "buscar contrato"})
     @Get('/buscar')
     async buscarContrato(@Body() command: BuscarContratoCommand ) {
         const useCase = new BuscarContatoUseCase (
