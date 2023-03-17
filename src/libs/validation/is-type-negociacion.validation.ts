@@ -1,15 +1,15 @@
-const IsTypeNegociacion = (type : string):boolean =>{
-    // enum Negociacion {
-    //     Cesion,
-    //     Traspaso,
-    //     Contrato,
-    // }
-
-    // for(let i = 0; i<3 ;i++){
-    //     if(type == Negociacion[i]){
-    //         return true;
-    //     }
-    // }
-    // return false;
-    return true;
+export const IsTypeNegociacion = (type : string):boolean =>{
+    
+    
+    if(
+        type == "Cesion" 
+        || type == "Traspaso" 
+        || type == "Contrato" 
+     
+        ) {
+            return true;
+        }else{
+            return false;
+        }
+   
 }

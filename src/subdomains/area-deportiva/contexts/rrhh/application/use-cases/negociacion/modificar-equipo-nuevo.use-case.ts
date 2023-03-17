@@ -13,6 +13,15 @@ implements IUseCase<IModificarEquipoNuevoCommands, IEquipoNuevoModificadoRespons
     
     private readonly aggregateRoot:StaffDeportivoAggregate;
 
+    /**
+     * The constructor of the StaffDeportivoCommandHandler class receives an instance of the
+     * IStaffDeportivoDomainService interface and an instance of the
+     * EquipoNuevoNegociacionModificadoEventPublisher class, and then calls the constructor of the
+     * StaffDeportivoAggregate class, passing the two instances as parameters.
+     * @param {IStaffDeportivoDomainService} staffDeportivoService - IStaffDeportivoDomainService
+     * @param {EquipoNuevoNegociacionModificadoEventPublisher} negociacionEquipoNuevoModificadoEvent -
+     * This is an event publisher that publishes an event when a new team is negotiated.
+     */
     constructor(
         private readonly staffDeportivoService: IStaffDeportivoDomainService,
         private readonly negociacionEquipoNuevoModificadoEvent : EquipoNuevoNegociacionModificadoEventPublisher,
@@ -22,6 +31,12 @@ implements IUseCase<IModificarEquipoNuevoCommands, IEquipoNuevoModificadoRespons
     }
 
 
+    /**
+     * The function returns an object with a property called success, which is a boolean, and a
+     * property called data, which is of type IEquipoNuevoModificadoResponse.
+     * @param {IModificarEquipoNuevoCommands} [command] - IModificarEquipoNuevoCommands
+     * @returns The return type is IEquipoNuevoModificadoResponse.
+     */
     async execute(command?: IModificarEquipoNuevoCommands): Promise<IEquipoNuevoModificadoResponse> {
         const data = await this.executeCommand(command);
 
@@ -29,6 +44,18 @@ implements IUseCase<IModificarEquipoNuevoCommands, IEquipoNuevoModificadoRespons
     }
 
     //Crea todo lo que tiene el comando con los value Object 
+    /**
+     * The function executeCommand is a private function that returns a promise of type
+     * NegociacionDomainEntity or null. The function takes a command of type
+     * IModificarEquipoNuevoCommands as a parameter. The function calls the createValueObject function,
+     * passing the command as a parameter. The function calls the validateValueObject function, passing
+     * the value object as a parameter. The function calls the createEntityNegociacionDomain function,
+     * passing the value object as a parameter. The function calls the
+     * exectueStaffDeportivoAggregateRoot function, passing the entity as a parameter. The function
+     * returns the result of the exectueStaffDeportivoAggregateRoot function
+     * @param {IModificarEquipoNuevoCommands} command - IModificarEquipoNuevoCommands
+     * @returns The return is a promise of the entity that was created.
+     */
     private async executeCommand(command: IModificarEquipoNuevoCommands): Promise<NegociacionDomainEntity | null> {
 
         //Llamada a la funcion que crea lso value object 
@@ -45,6 +72,12 @@ implements IUseCase<IModificarEquipoNuevoCommands, IEquipoNuevoModificadoRespons
     }
 
     //Crea los value Object 
+    /**
+     * It takes an object with a bunch of properties, and returns an object with the same properties,
+     * but with the values wrapped in a class.
+     * @param {IModificarEquipoNuevoCommands} command - IModificarEquipoNuevoCommands
+     * @returns The return is a value object.
+     */
     private createValueObject(command: IModificarEquipoNuevoCommands): INegociacionDomainEntityInterface {
 
         
@@ -58,6 +91,11 @@ implements IUseCase<IModificarEquipoNuevoCommands, IEquipoNuevoModificadoRespons
     }
 
     //Valida los value object
+    /**
+     * If the valueObject has an IdValueObject property, then check if it has errors, if it does, then
+     * set the errors of the valueObject to the errors of the IdValueObject property.
+     * @param {INegociacionDomainEntityInterface} valueObject - INegociacionDomainEntityInterface
+     */
     private validateValueObject(valueObject: INegociacionDomainEntityInterface): void {
 
         const {
@@ -81,6 +119,12 @@ implements IUseCase<IModificarEquipoNuevoCommands, IEquipoNuevoModificadoRespons
     }
 
     //Crea la entidad en si
+    /**
+     * It takes an object with a bunch of properties, and returns a new object with the same
+     * properties.
+     * @param {INegociacionDomainEntityInterface} valueObject - INegociacionDomainEntityInterface
+     * @returns A new instance of NegociacionDomainEntity
+     */
     private createEntityNegociacionDomain(
         valueObject: INegociacionDomainEntityInterface
     ): NegociacionDomainEntity {

@@ -1,4 +1,4 @@
-const IsString = (value: string):boolean => {
+export const IsString = (value: string):boolean => {
 
     if(typeof value === "string"){
         return true;

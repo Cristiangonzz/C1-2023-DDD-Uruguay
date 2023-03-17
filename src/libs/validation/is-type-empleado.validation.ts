@@ -1,4 +1,4 @@
-const IsTypeEmpleado = (type : string):boolean =>{
+export const IsTypeEmpleado = (type : string):boolean =>{
    
 
     if(
@@ -11,9 +11,9 @@ const IsTypeEmpleado = (type : string):boolean =>{
         || type == "Administrativo" 
         || type == "Medico" 
         ) {
-            return false;
-        }else{
             return true;
+        }else{
+            return false;
         }
 
 

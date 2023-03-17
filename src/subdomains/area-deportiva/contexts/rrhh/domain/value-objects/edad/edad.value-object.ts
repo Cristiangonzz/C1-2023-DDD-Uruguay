@@ -1,4 +1,6 @@
+import { IsNumber } from '../../../../../../../libs/validation/is-number.validation';
 import { ValueObjectBase } from '../../../../../../../libs/sofka/bases/object-value.base';
+import { IsPositivo } from 'src/libs/validation/is-positivo.validation';
 
 export class EdadValueObject extends ValueObjectBase<number> {
    
@@ -8,8 +10,8 @@ export class EdadValueObject extends ValueObjectBase<number> {
 
     validateData(): void {
 
-       //this.contenidoEdad();
-       //this.formatoEdad();
+       this.contenidoEdad();
+       this.formatoEdad();
 
     }
     
@@ -29,7 +31,7 @@ export class EdadValueObject extends ValueObjectBase<number> {
 
     private formatoEdad() :void {
 
-        if( this.value && !IsNumber(this.value) ){
+        if( this.value && IsNumber(this.value) === false ){
         
                 const error = {
                     field:"Edad",

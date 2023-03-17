@@ -1,23 +1,20 @@
-const IsNacionalidad = (nacionalidad : string):boolean =>{
-    //  enum Pais {
-     //     Uruguay,
-     //     Argentina,
-     //     Brazil,
-     //     Ecuador,
-     //     Peru,
-     //     Bolivia,
-     //     Paraguay,
-     //     Cuba,
-     //     Chile,
-     //     Colombia,
-     //     Venezuela,
-     // }
+export const IsNacionalidad = (nacionalidad : string):boolean =>{
 
-     // for(let i = 0; i<11 ;i++){
-     //     if(nacionalidad == Pais[i]){
-     //         return true;
-     //     }
-     // }
-   // return false;
-   return true;
+
+  if(
+    nacionalidad == "Uruguay" || 
+    nacionalidad == "Argentina" ||
+    nacionalidad == "Brazil" ||
+    nacionalidad == "Peru" ||
+    nacionalidad == "Bolivia" ||
+    nacionalidad == "Paraguay" ||
+    nacionalidad == "Cuba" ||
+    nacionalidad == "Chile" ||
+    nacionalidad == "Colombia" ||
+    nacionalidad == "Venezuela" 
+    ){
+      return true;
+    }else{
+      return false;
+    }
 }

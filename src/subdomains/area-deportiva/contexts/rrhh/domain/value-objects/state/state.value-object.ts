@@ -13,7 +13,7 @@ export class StateValueObject extends ValueObjectBase<boolean> {
  
      contenidoTerminos(): void {
  
-         if(this.value !== false && this.value !== true){
+         if(typeof this.value !== "boolean") {
              const error = {
                  field: "State",
                  message:"El state es incorrecto , debe ser False o True"

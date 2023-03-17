@@ -140,10 +140,10 @@ export class CrearEmpleadoUseCase
             
             nombre: nombre.valueOf(),
             documento: documento.valueOf(),
-             tipoEmpleado:tipoEmpleado.valueOf(),
-             nacionalidad: nacionalidad.valueOf(),
-             edad: edad.valueOf(),
-             salario: salario.valueOf(),
+            tipoEmpleado:tipoEmpleado.valueOf(),
+            nacionalidad: nacionalidad.valueOf(),
+            edad: edad.valueOf(),
+            salario: salario.valueOf(),
         })
     }
 

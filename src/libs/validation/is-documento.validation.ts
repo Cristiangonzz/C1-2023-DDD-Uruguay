@@ -1,4 +1,4 @@
-const IsDocument = (documento: string):boolean =>{
+export const IsDocument = (documento: string):boolean =>{
 
      documento = "/^[1-9]{8}$/";
 

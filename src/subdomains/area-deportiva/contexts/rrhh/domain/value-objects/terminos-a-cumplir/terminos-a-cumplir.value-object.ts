@@ -9,15 +9,15 @@ export class TerminosACumplirValueObject extends ValueObjectBase<string> {
    }
 
     validateData(): void {
-        //this.contenidoTerminos();
+       // this.contenidoTerminos();
     }
 
     contenidoTerminos(): void {
 
-        if(this.value.length > 2000){
+        if(this.value && this.value.length < 0){
             const error = {
                 field: "Terminos",
-                message:"Los terminos no puede superar los 2000 caracteres "
+                message:"Los terminos deben de existir"
             }
             this.setError(error);
         }

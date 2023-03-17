@@ -10,12 +10,12 @@ export class IdValueObject extends ValueObjectBase<string> {
     
 
     validateData(): void {
-      // this.validarId();
+       this.validarId();
        
     }
     
     private validarId():void{
-        if(this.value && !IsUUID(this.value)){
+        if(this.value && IsUUID(this.value) === false){
             
             const error = {
                 field: "Identificador",

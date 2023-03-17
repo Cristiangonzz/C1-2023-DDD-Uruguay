@@ -1,4 +1,6 @@
 import {  ValueObjectBase } from 'src/libs';
+import { IsString } from 'src/libs/validation/is-string.validation';
+import { IsTypeEmpleado } from 'src/libs/validation/is-type-empleado.validation';
 
 
 export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
@@ -8,12 +10,13 @@ export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
     }
 
     validateData() : void {
-       //this.validacionTypeEmpleado();
+       this.validacionTypeEmpleado();
+       this.validacionEmpleado();
     }
 
     private validacionTypeEmpleado() : void {
 
-        if(this.value && IsTypeEmpleado(this.value) === true){
+        if(this.value && IsTypeEmpleado(this.value) === false){
             const error = {
                 field: "Empleado",
                 message: "El tipo de empleado es incorrecto"
@@ -23,7 +26,8 @@ export class TipoEmpleadoValueObject extends ValueObjectBase<string> {
     }
 
     private validacionEmpleado():void{
-        if(this.value && !IsString(this.value)){
+
+        if(this.value && IsString(this.value) === false){
             const error = {
                 field: "Empleado",
                 message: "El dato debe ser de tipo string "

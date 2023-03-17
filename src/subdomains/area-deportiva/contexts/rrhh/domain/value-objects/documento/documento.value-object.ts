@@ -1,3 +1,4 @@
+import { IsDocument } from 'src/libs/validation/is-documento.validation';
 import { ValueObjectBase } from '../../../../../../../libs/sofka/bases/object-value.base';
 
 export class DocumentoValueObject extends ValueObjectBase<string> {
@@ -7,7 +8,7 @@ export class DocumentoValueObject extends ValueObjectBase<string> {
     }
     
     validateData(): void {
-       //this.formatoDocumento();
+       this.formatoDocumento();
        this.contenidoDocumento();
     }
 
@@ -25,7 +26,7 @@ export class DocumentoValueObject extends ValueObjectBase<string> {
 
     private formatoDocumento():void{
 
-        if(this.value && !IsDocument(this.value)){
+        if(this.value && IsDocument(this.value) === false){
             const error = {
                 field:"Documento",
                 message: "El documento no corresponde a un formato CI"

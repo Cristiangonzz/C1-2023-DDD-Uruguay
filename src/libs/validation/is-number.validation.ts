@@ -1,4 +1,4 @@
-const IsNumber = (dinero: number):boolean =>{
+export  const IsNumber = (dinero: number):boolean =>{
 
      if(typeof dinero === "number"){
          return true;
